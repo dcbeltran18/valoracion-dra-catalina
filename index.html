@@ -155,7 +155,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* Doctora */
 .doc{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
 @media (min-width:860px){.doc{grid-template-columns:.85fr 1.15fr}}
-.portrait{aspect-ratio:4/5;max-width:100%;border-radius:0;outline:1px solid rgba(201,169,110,.45);outline-offset:-14px;background:linear-gradient(180deg,#1b1915,#0d0c0a);display:grid;place-items:center;color:var(--muted-l);font-size:.9rem;text-align:center;padding:24px}
+.portrait{position:relative;aspect-ratio:3/4;max-width:440px;width:100%;border-radius:0;background:#000;overflow:hidden}
+.portrait::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,169,110,.45);pointer-events:none}
+.portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .doc-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
 .creds{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line-l)}
 .creds li{display:grid;grid-template-columns:9.5em 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-l);font-size:.95rem}
@@ -365,7 +367,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   <!-- Doctora -->
   <section class="band light">
     <div class="in doc">
-      <div class="portrait">Retrato de la doctora<br>(foto vertical, fondo claro)</div>
+      <div class="portrait"><img src="img/dra-catalina-480.webp" srcset="img/dra-catalina-480.webp 480w, img/dra-catalina-900.webp 900w" sizes="(min-width:860px) 440px, calc(100vw - 36px)" width="480" height="640" loading="lazy" decoding="async" alt="Dra. Catalina Beltrán, odontóloga estética en Medellín"></div>
       <div class="doc-copy">
         <h2>Dra. Catalina Beltrán</h2>
         <p class="lead muted"><span class="es">Ella misma hace tu valoración, tu diseño y tu tratamiento. Sin intermediarios: la persona que ves en la videollamada es la que te atiende en Medellín.</span><span class="en">She does your assessment, design and treatment herself. The person you meet on the video call is the one who treats you in Medellín.</span></p>
