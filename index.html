@@ -140,7 +140,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .compare .pane{padding:0}
 .ba-grid{display:grid;gap:28px}
 @media (min-width:900px){.ba-grid{grid-template-columns:1.3fr .7fr;align-items:center}}
-.compare{position:relative;aspect-ratio:340/206;max-width:560px;width:100%;max-width:100%;border-radius:0;overflow:hidden;user-select:none;touch-action:pan-y;background:#1b3034}
+.compare{position:relative;aspect-ratio:910/557;max-width:680px;width:100%;max-width:100%;border-radius:0;overflow:hidden;user-select:none;touch-action:pan-y;background:#1b3034}
 .compare .pane{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font-size:.92rem}
 .compare .before{justify-items:start;padding-left:9%;background:repeating-linear-gradient(135deg,#151411 0 14px,#1a1915 14px 28px);color:var(--muted-d)}
 .compare .after{justify-items:end;padding-right:9%;background:repeating-linear-gradient(135deg,#2a261e 0 14px,#302b22 14px 28px);color:var(--text-d);clip-path:inset(0 0 0 var(--pos,50%))}
@@ -358,8 +358,8 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   <section class="band">
     <div class="in ba-grid">
       <div class="compare" id="compare" style="--pos:50%">
-        <div class="pane before" id="pane-before"><img src="img/caso1-antes.webp" width="340" height="206" loading="lazy" decoding="async" alt="Sonrisa antes del diseño de sonrisa"></div>
-        <div class="pane after" id="pane-after"><img src="img/caso1-despues.webp" width="340" height="206" loading="lazy" decoding="async" alt="La misma sonrisa después del diseño con carillas"></div>
+        <div class="pane before" id="pane-before"><img src="img/caso1-antes-600.webp" srcset="img/caso1-antes-600.webp 600w, img/caso1-antes.webp 910w" sizes="(min-width:900px) 680px, calc(100vw - 36px)" width="910" height="557" loading="lazy" decoding="async" alt="Sonrisa antes del diseño de sonrisa"></div>
+        <div class="pane after" id="pane-after"><img src="img/caso1-despues-600.webp" srcset="img/caso1-despues-600.webp 600w, img/caso1-despues.webp 910w" sizes="(min-width:900px) 680px, calc(100vw - 36px)" width="910" height="557" loading="lazy" decoding="async" alt="La misma sonrisa después del diseño con carillas"></div>
         <span class="tag l"><span class="es">Antes</span><span class="en">Before</span></span>
         <span class="tag r"><span class="es">Después</span><span class="en">After</span></span>
         <div class="handle"></div>
