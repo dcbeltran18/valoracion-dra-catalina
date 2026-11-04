@@ -136,9 +136,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .steps p{color:var(--muted-l)}
 
 /* Antes y después: comparador */
+.compare .pane img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.compare .pane{padding:0}
 .ba-grid{display:grid;gap:28px}
 @media (min-width:900px){.ba-grid{grid-template-columns:1.3fr .7fr;align-items:center}}
-.compare{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:0;overflow:hidden;user-select:none;touch-action:pan-y;background:#1b3034}
+.compare{position:relative;aspect-ratio:340/206;max-width:560px;width:100%;max-width:100%;border-radius:0;overflow:hidden;user-select:none;touch-action:pan-y;background:#1b3034}
 .compare .pane{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font-size:.92rem}
 .compare .before{justify-items:start;padding-left:9%;background:repeating-linear-gradient(135deg,#151411 0 14px,#1a1915 14px 28px);color:var(--muted-d)}
 .compare .after{justify-items:end;padding-right:9%;background:repeating-linear-gradient(135deg,#2a261e 0 14px,#302b22 14px 28px);color:var(--text-d);clip-path:inset(0 0 0 var(--pos,50%))}
@@ -283,7 +285,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
 </head>
 <body>
 <div class="announce"><div class="in"><span class="es">Valoración gratis por WhatsApp</span><span class="en">Free assessment on WhatsApp</span><span aria-hidden="true">•</span><span class="es">Precios en dólares</span><span class="en">Prices in US dollars</span></div></div>
-<div class="draft"><div class="in"><b>Borrador.</b> Falta con la doctora: fotos de antes y después, formación y RETHUS, y precio del paquete.</div></div>
+<div class="draft"><div class="in"><b>Borrador.</b> Falta con la doctora: formación y RETHUS, y precio del paquete. Opcional: más casos de antes y después.</div></div>
 
 <header class="top">
   <div class="in">
@@ -356,8 +358,8 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   <section class="band">
     <div class="in ba-grid">
       <div class="compare" id="compare" style="--pos:50%">
-        <div class="pane before" id="pane-before"><span>Foto ANTES · caso 1<br>(pedir a la doctora)</span></div>
-        <div class="pane after" id="pane-after"><span>Foto DESPUÉS · caso 1<br>(pedir a la doctora)</span></div>
+        <div class="pane before" id="pane-before"><img src="img/caso1-antes.webp" width="340" height="206" loading="lazy" decoding="async" alt="Sonrisa antes del diseño de sonrisa"></div>
+        <div class="pane after" id="pane-after"><img src="img/caso1-despues.webp" width="340" height="206" loading="lazy" decoding="async" alt="La misma sonrisa después del diseño con carillas"></div>
         <span class="tag l"><span class="es">Antes</span><span class="en">Before</span></span>
         <span class="tag r"><span class="es">Después</span><span class="en">After</span></span>
         <div class="handle"></div>
@@ -366,11 +368,6 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <div class="sec-head" style="margin:0">
         <h2><span class="es">Pacientes reales, resultados naturales</span><span class="en">Real patients, natural results</span></h2>
         <p class="muted"><span class="es">Desliza para comparar. Cada sonrisa se diseña según la cara, el tono de piel y la mordida de cada paciente.</span><span class="en">Slide to compare. Each smile is designed around the patient's face, skin tone and bite.</span></p>
-        <div class="cases" role="group" aria-label="Casos">
-          <button type="button" class="chip" id="case-1" data-case="1" aria-pressed="true"><span class="es">Caso 1</span><span class="en">Case 1</span></button>
-          <button type="button" class="chip" id="case-2" data-case="2" aria-pressed="false"><span class="es">Caso 2</span><span class="en">Case 2</span></button>
-          <button type="button" class="chip" id="case-3" data-case="3" aria-pressed="false"><span class="es">Caso 3</span><span class="en">Case 3</span></button>
-        </div>
       </div>
     </div>
   </section>
