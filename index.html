@@ -139,9 +139,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .sbs{margin-top:clamp(36px,6vw,56px)}
 .sbs-title{font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-d);margin-bottom:14px}
 .sbs-grid{display:grid;gap:12px;max-width:900px}
-@media (min-width:700px){.sbs-grid{grid-template-columns:1fr 1fr}}
+@media (min-width:700px){.sbs-grid{grid-template-columns:9fr 4fr;align-items:start}}
 .sbs figure{margin:0;position:relative}
-.sbs img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--line-d)}
+.sbs img{display:block;width:100%;height:auto;border:1px solid var(--line-d)}
 .sbs figcaption{position:absolute;top:12px;left:12px;font-size:.8rem;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(13,27,30,.75);color:var(--text-d)}
 
 /* Antes y después: comparador */
@@ -383,7 +383,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <p class="sbs-title"><span class="es">Otro caso real · antes y después</span><span class="en">Another real case · before and after</span></p>
       <div class="sbs-grid">
         <figure><img src="img/caso2b-antes-600.webp" srcset="img/caso2b-antes-600.webp 600w, img/caso2b-antes.webp 900w" sizes="(min-width:700px) 440px, calc(100vw - 36px)" width="900" height="600" loading="lazy" decoding="async" alt="Dientes antes del tratamiento, con manchas y desgaste"><figcaption><span class="es">Antes</span><span class="en">Before</span></figcaption></figure>
-        <figure><img src="img/caso2b-despues-600.webp" srcset="img/caso2b-despues-600.webp 600w, img/caso2b-despues.webp 900w" sizes="(min-width:700px) 440px, calc(100vw - 36px)" width="900" height="600" loading="lazy" decoding="async" alt="Los mismos dientes después del tratamiento"><figcaption><span class="es">Después</span><span class="en">After</span></figcaption></figure>
+        <figure><img src="img/caso2b-despues-600.webp" srcset="img/caso2b-despues-600.webp 400w, img/caso2b-despues.webp 600w" sizes="(min-width:700px) 280px, calc(100vw - 36px)" width="600" height="900" loading="lazy" decoding="async" alt="Los mismos dientes después del tratamiento"><figcaption><span class="es">Después</span><span class="en">After</span></figcaption></figure>
       </div>
     </div>
   </section>
