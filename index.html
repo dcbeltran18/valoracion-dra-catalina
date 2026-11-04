@@ -511,6 +511,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
 <footer><div class="in">
   <span>Dra. Catalina Beltrán, odontología estética, Medellín, Colombia</span>
   <span class="es">Los resultados varían según cada paciente. Precios en dólares estadounidenses, sujetos a valoración.</span><span class="en">Results vary by patient. Prices in US dollars, subject to assessment.</span>
+  <a href="privacidad.html" style="color:inherit;text-underline-offset:3px"><span class="es">Política de privacidad y tratamiento de datos</span><span class="en">Privacy policy</span></a>
 </div></footer>
 
 <div class="bar"><a class="btn btn-wa wa" id="cta-bar" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Quiero mi valoración gratis</span><span class="en">Get my free assessment</span></a></div>
@@ -522,7 +523,9 @@ footer .in{display:flex;flex-direction:column;gap:6px}
    SHEET_URL: un Apps Script publicado como aplicación web que agrega una fila (ref, gclid, idioma, botón, fecha) a la hoja.
    Cada clic lleva un código corto (ej. DS-7K2Q) en el mensaje de WhatsApp. Alejandra lo anota en MENSAJES DIENTES; cuando el
    paciente agenda o paga, el código se cruza con el gclid y se sube a Google Ads como conversión offline. */
-const CFG={AW_ID:'',AW_LABEL:'',SHEET_URL:'',PHONE:'573203118517'};
+const CFG={AW_ID:'AW-18528177888',AW_LABEL:'a7ZECPzRoqQdEOCd9oJF',SHEET_URL:'',PHONE:'573203118517'};
+/* Solo mide en el dominio real; en vistas previas no envía nada. */
+if(!/(^|\.)dracatalinabeltran\.com$/.test(location.hostname)){CFG.AW_ID='';}
 const MSG={es:'Hola quiero mi valoracion personalizada gratis para mi diseno de sonrisa',en:'Hi I would like my free smile design assessment'};
 const q=new URLSearchParams(location.search);
 function store(k,v){try{if(v!==undefined)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)}catch(e){return v??null}}
