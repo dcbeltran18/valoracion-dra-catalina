@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Diseño de sonrisa en Medellín con la Dra. Catalina Beltrán. Valoración gratis por WhatsApp y precio en dólares para pacientes que viven fuera de Colombia.">
+<meta name="theme-color" content="#080807">
+<title>Diseño de sonrisa en Medellín | Dra. Catalina Beltrán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap">
+<style>
+/* Concepto: bandas alternas "tinta" (consultorio de noche) y "porcelana" (luz de gabinete). El único elemento protagonista es la guía de tonos de porcelana del hero; todo lo demás es tipografía sobria y aire.
+   Look único y deliberado: no cambia con el tema del visor; cada color está definido aquí. */
+:root{
+  --ink:#080807;        /* negro cálido, como Smile Natural Studio */
+  --ink-2:#141310;      /* paneles */
+  --porcelain:#100f0d;  /* banda alterna */
+  --paper:#ffffff;
+  --text-d:#efe9df;     /* marfil */
+  --muted-d:#a39b8e;
+  --text-l:#efe9df;
+  --muted-l:#a39b8e;
+  --line-d:#2b271f; --line-l:#2b271f;
+  --aqua:#c9a96e;       /* dorado */
+  --teal:#c9a96e;
+  --wa:#c9a96e; --wa-ink:#080807;
+  --pend:#e0b55a;
+  --display:"Tenor Sans","Optima","Candara",sans-serif;
+  --body:"Jost","Futura",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gutter:max(18px,env(safe-area-inset-left,0px));
+  --gutter-r:max(18px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text-d);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+html[data-lang="es"] .en, html[data-lang="en"] .es{display:none!important}
+a{color:inherit}
+.in{max-width:1120px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.band{padding-block:clamp(56px,9vw,104px)}
+.band.light{background:var(--porcelain);color:var(--text-l)}
+.band.light .muted{color:var(--muted-l)}
+.muted{color:var(--muted-d)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:.03em}
+h1,h2{text-transform:uppercase}
+.alt{display:block;font-family:var(--body);font-style:italic;font-weight:300;color:var(--aqua);text-transform:none;letter-spacing:0}
+body{font-weight:300}
+h2{font-size:clamp(2rem,5vw,3.1rem);line-height:1.05}
+h3{font-size:1.35rem;line-height:1.2}
+p{margin:0}
+.lead{font-size:1.1rem;max-width:34em}
+.pend{border-bottom:1.5px dashed var(--pend)}
+:focus-visible{outline:2px solid var(--aqua);outline-offset:3px}
+.light :focus-visible{outline-color:var(--teal)}
+
+/* Borrador */
+.announce{background:var(--aqua);color:var(--ink);font:600 .74rem var(--body);letter-spacing:.14em;text-transform:uppercase;text-align:center;padding-block:10px}
+.announce .in{display:flex;justify-content:center;gap:10px 18px;flex-wrap:wrap}
+.draft{background:#2a2410;color:#f3d998;font-size:.82rem;line-height:1.45;padding-block:9px}
+.draft .in{display:block}
+
+/* Barra superior */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(8,8,7,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-d)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--ink)}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.brand{display:flex;flex-direction:column;line-height:1.1}
+.brand b{font-family:var(--display);font-weight:400;font-size:1.15rem;letter-spacing:.08em;text-transform:uppercase}
+.brand span{font-size:.75rem;color:var(--muted-d)}
+.top-r{display:flex;align-items:center;gap:10px}
+.lang{display:flex;border:1px solid var(--line-d);border-radius:999px;padding:3px}
+.lang button{font:600 .78rem var(--body);padding:5px 10px;border:0;border-radius:999px;background:transparent;color:var(--muted-d);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--text-d);color:var(--ink)}
+.top .wa-mini{display:none}
+@media (min-width:760px){.top .wa-mini{display:inline-flex}}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font-weight:500;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:16px 26px;border-radius:0;border:1px solid transparent;cursor:pointer;line-height:1.2}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--wa);color:var(--wa-ink)}
+.btn-ghost{border-color:var(--aqua);color:var(--aqua)}
+.light .btn-ghost{border-color:var(--line-l);color:var(--text-l)}
+.btn-sm{padding:9px 16px;font-size:.88rem}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s ease,background-color .15s}.btn-wa:hover{transform:translateY(-1px);background:#d6b97f}}
+
+/* Hero */
+.hero{padding-block:clamp(40px,7vw,88px) clamp(48px,7vw,80px)}
+.hero .in{display:grid;gap:clamp(36px,5vw,64px);align-items:center}
+@media (min-width:900px){.hero .in{grid-template-columns:1.05fr .95fr}}
+.hero-copy{display:flex;flex-direction:column;gap:22px;min-width:0}
+.kicker{font-size:.92rem;color:var(--aqua)}
+.hero h1{font-size:clamp(2.4rem,6.6vw,4.4rem);line-height:1.04}
+.hero{background:radial-gradient(700px 500px at 85% 40%,rgba(201,169,110,.12),transparent 70%),var(--ink)}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px}
+.assure{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.88rem;color:var(--muted-d)}
+.assure span{display:inline-flex;gap:7px;align-items:center}
+.assure span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--aqua)}
+
+/* Guía de tonos: el protagonista */
+.shade{background:var(--ink-2);border:1px solid var(--line-d);outline:1px solid rgba(201,169,110,.35);outline-offset:-10px;border-radius:0;padding:clamp(22px,4vw,36px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.shade-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:.85rem;color:var(--muted-d)}
+.shade-head b{font-family:var(--display);font-weight:400;font-size:1.25rem;color:var(--text-d)}
+.tabs{display:grid;grid-template-columns:repeat(7,1fr);gap:clamp(6px,1.4vw,12px);align-items:end;height:clamp(170px,30vw,230px);padding-top:26px}
+.tab{appearance:none;border:0;padding:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:10px;height:100%;justify-content:flex-end;color:var(--muted-d);font:600 .72rem var(--body)}
+.tab .stick{width:3px;height:22px;background:#7d6c4c;border-radius:2px}
+.tab .tooth{width:100%;max-width:46px;height:68%;border-radius:10px 10px 46% 46% / 10px 10px 30% 30%;
+  background:linear-gradient(180deg,var(--c1) 0%,var(--c2) 62%,var(--c3) 100%);box-shadow:inset 0 -10px 14px rgba(255,255,255,.35),inset 0 6px 10px rgba(0,0,0,.08)}
+.tab[aria-pressed="true"]{color:var(--text-d)}
+.tab[aria-pressed="true"] .tooth{outline:2px solid var(--aqua);outline-offset:4px}
+@media (prefers-reduced-motion:no-preference){.tab{transition:transform .35s cubic-bezier(.2,.7,.2,1)}.tab[aria-pressed="true"]{transform:translateY(-16px)}}
+.shade-note{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border-top:1px solid var(--line-d);padding-top:18px}
+.swatch{width:44px;height:44px;border-radius:50%;background:var(--sel,#f6f4ee);box-shadow:inset 0 -6px 10px rgba(255,255,255,.4)}
+.shade-note p{font-size:.92rem;color:var(--muted-d)}
+.shade-note b{color:var(--text-d);font-weight:600}
+
+/* Franja de confianza */
+.strip{border-block:1px solid var(--line-d)}
+.strip .in{display:grid;grid-template-columns:repeat(2,1fr)}
+.strip .item{padding:18px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.strip .item + .item{border-left:1px solid var(--line-d)}
+.strip .item:nth-child(3){border-left:0}
+.strip .item:nth-child(n+3){border-top:1px solid var(--line-d)}
+.strip strong{font-family:var(--display);font-weight:400;font-size:1.6rem;line-height:1.1;font-variant-numeric:lining-nums}
+.strip span{font-size:.84rem;color:var(--muted-d)}
+.strip strong span{font-size:inherit;color:inherit}
+@media (min-width:760px){.strip .in{grid-template-columns:repeat(4,1fr)}.strip .item:nth-child(3){border-left:1px solid var(--line-d)}.strip .item:nth-child(n+3){border-top:0}.strip .item{padding:22px 24px}}
+
+/* Encabezado de sección */
+.sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(28px,4vw,44px);max-width:40em}
+
+/* Pasos */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:28px;counter-reset:s}
+@media (min-width:820px){.steps{grid-template-columns:repeat(3,1fr);gap:40px}}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line-l);padding-top:18px;min-width:0}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--teal)}
+.steps p{color:var(--muted-l)}
+
+/* Antes y después: comparador */
+.ba-grid{display:grid;gap:28px}
+@media (min-width:900px){.ba-grid{grid-template-columns:1.3fr .7fr;align-items:center}}
+.compare{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:0;overflow:hidden;user-select:none;touch-action:pan-y;background:#1b3034}
+.compare .pane{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font-size:.92rem}
+.compare .before{justify-items:start;padding-left:9%;background:repeating-linear-gradient(135deg,#151411 0 14px,#1a1915 14px 28px);color:var(--muted-d)}
+.compare .after{justify-items:end;padding-right:9%;background:repeating-linear-gradient(135deg,#2a261e 0 14px,#302b22 14px 28px);color:var(--text-d);clip-path:inset(0 0 0 var(--pos,50%))}
+.compare .tag{position:absolute;top:14px;font-size:.8rem;font-weight:600;padding:5px 11px;border-radius:999px;background:rgba(13,27,30,.75);color:var(--text-d)}
+.compare .tag.l{left:14px}.compare .tag.r{right:14px}
+.compare .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.compare .handle::after{content:"";position:absolute;top:50%;left:50%;width:42px;height:42px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);
+  box-shadow:0 2px 10px rgba(0,0,0,.25);background-image:linear-gradient(90deg,transparent 13px,#0d1b1e 13px 15px,transparent 15px 27px,#0d1b1e 27px 29px,transparent 29px)}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.cases{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line-d);background:transparent;color:var(--muted-d);border-radius:999px;padding:7px 14px;font:500 .88rem var(--body);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--text-d);color:var(--ink);border-color:var(--text-d)}
+
+/* Doctora */
+.doc{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
+@media (min-width:860px){.doc{grid-template-columns:.85fr 1.15fr}}
+.portrait{aspect-ratio:4/5;max-width:100%;border-radius:0;outline:1px solid rgba(201,169,110,.45);outline-offset:-14px;background:linear-gradient(180deg,#1b1915,#0d0c0a);display:grid;place-items:center;color:var(--muted-l);font-size:.9rem;text-align:center;padding:24px}
+.doc-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.creds{list-style:none;margin:0;padding:0;display:grid;gap:0;border-top:1px solid var(--line-l)}
+.creds li{display:grid;grid-template-columns:9.5em 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-l);font-size:.95rem}
+.creds li span:first-child{color:var(--muted-l)}
+@media (max-width:420px){.creds li{grid-template-columns:1fr;gap:2px}}
+.textlink{color:var(--teal);font-weight:600;text-underline-offset:4px}
+
+/* Precios */
+.price-grid{display:grid;gap:28px}
+@media (min-width:900px){.price-grid{grid-template-columns:1fr 1fr;align-items:start}}
+.compare-rows{display:grid;gap:0;border-top:1px solid var(--line-d)}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line-d);font-variant-numeric:tabular-nums}
+.row .us{color:var(--muted-d);text-decoration:line-through;text-decoration-color:rgba(159,179,176,.5);font-size:.92rem;white-space:nowrap}
+.row .med{font-family:var(--display);font-size:1.6rem;line-height:1;white-space:nowrap}
+.row .what{min-width:0}
+.row .what small{display:block;color:var(--muted-d);font-size:.8rem}
+.fine{font-size:.82rem;color:var(--muted-d);margin-top:12px}
+.pkg{background:var(--ink-2);color:var(--text-l);border:1px solid rgba(201,169,110,.5);border-radius:0;padding:clamp(22px,4vw,34px);display:flex;flex-direction:column;gap:18px}
+.pkg .amount{font-family:var(--display);font-size:clamp(2.8rem,7vw,3.6rem);line-height:1;font-variant-numeric:lining-nums}
+.pkg .amount small{display:block;font-family:var(--body);font-size:.9rem;color:var(--muted-l);margin-top:8px}
+.incl{display:grid;gap:18px}
+@media (min-width:480px){.incl{grid-template-columns:1.3fr 1fr}}
+.incl h3{font-family:var(--body);font-size:.9rem;font-weight:700;margin-bottom:8px}
+.incl ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:.93rem}
+.incl .yes li{padding-left:22px;position:relative}
+.incl .yes li::before{content:"";position:absolute;left:2px;top:.55em;width:10px;height:6px;border-left:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(-45deg)}
+.incl .no li{padding-left:22px;position:relative;color:var(--muted-l)}
+.incl .no li::before{content:"";position:absolute;left:2px;top:.75em;width:10px;height:2px;background:var(--muted-l)}
+.pkg .btn{align-self:stretch}
+.pkg .muted-l{font-size:.84rem;color:var(--muted-l);text-align:center}
+
+/* Viaje */
+.trip{list-style:none;margin:0;padding:0;display:grid;gap:0}
+@media (min-width:860px){.trip{grid-template-columns:repeat(4,1fr)}}
+.trip li{position:relative;padding:0 0 26px 30px;min-width:0}
+.trip li::before{content:"";position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:50%;background:var(--teal)}
+.trip li::after{content:"";position:absolute;left:5px;top:22px;bottom:0;width:1px;background:var(--line-l)}
+.trip li:last-child::after{display:none}
+@media (min-width:860px){
+  .trip li{padding:30px 22px 0 0}
+  .trip li::before{top:0;left:0}
+  .trip li::after{top:5px;left:18px;right:0;bottom:auto;width:auto;height:1px}
+  .trip li:last-child::after{display:none}
+}
+.trip .d{font-family:var(--display);font-size:1.5rem;display:block;margin-bottom:4px}
+.trip p{color:var(--muted-l);font-size:.95rem}
+
+/* Pacientes reales */
+.patients{margin-top:clamp(44px,7vw,72px);display:flex;flex-direction:column;gap:20px}
+.pat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.pat-head h3{text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem}
+.pat-hint{font-size:.82rem;white-space:nowrap}
+.pat-track{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);scroll-padding-inline:var(--gutter)}
+.pat-track::-webkit-scrollbar{display:none}
+.pat-track figure{margin:0;scroll-snap-align:start;min-width:0}
+.pat-track img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 28%;border:1px solid var(--line-d);background:var(--ink-2)}
+.pat-track figcaption{margin-top:10px;font-size:.85rem;color:var(--muted-d);letter-spacing:.04em}
+.patients .btn{align-self:flex-start}
+@media (min-width:820px){
+  .pat-track{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);overflow:visible;margin-inline:0;padding-inline:0;max-width:900px}
+  .pat-hint{display:none}
+}
+
+/* Reseñas */
+.reviews{display:grid;gap:18px}
+@media (min-width:820px){.reviews{grid-template-columns:repeat(3,1fr)}}
+.review{border-top:1px solid var(--line-d);padding-top:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.review .stars{color:var(--aqua);letter-spacing:2px;font-size:.9rem}
+.review p{font-family:var(--display);font-size:1.15rem;line-height:1.4;color:var(--muted-d)}
+.review small{color:var(--muted-d);font-size:.82rem}
+
+/* Antes de decidir + FAQ */
+.two{display:grid;gap:48px}
+@media (min-width:900px){.two{grid-template-columns:.9fr 1.1fr}}
+.know{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.know li{padding-left:18px;border-left:2px solid var(--teal);color:var(--muted-l)}
+.know b{color:var(--text-l);display:block;font-weight:600}
+details{border-bottom:1px solid var(--line-l)}
+details:first-of-type{border-top:1px solid var(--line-l)}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;padding:18px 0;font-weight:600;font-size:1.02rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:12px;height:12px;flex:none;margin-top:6px;border-right:2px solid var(--teal);border-bottom:2px solid var(--teal);transform:rotate(45deg)}
+details[open] summary::after{transform:rotate(-135deg);margin-top:10px}
+details p{padding:0 0 18px;color:var(--muted-l);max-width:36em}
+
+/* Cierre */
+.closing{text-align:left}
+.closing .in{display:grid;gap:26px}
+@media (min-width:860px){.closing .in{grid-template-columns:1.2fr .8fr;align-items:end}}
+.closing h2{font-size:clamp(2.4rem,6.5vw,4rem)}
+.closing .actions{display:flex;flex-direction:column;gap:12px}
+.addr{font-size:.9rem;color:var(--muted-d)}
+footer{border-top:1px solid var(--line-d);padding-block:24px 110px;font-size:.8rem;color:var(--muted-d)}
+@media (min-width:760px){footer{padding-block:24px}}
+footer .in{display:flex;flex-direction:column;gap:6px}
+
+/* WhatsApp fijo en celular */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(8,8,7,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid var(--line-d);
+  padding:10px var(--gutter-r) calc(10px + env(safe-area-inset-bottom,0px)) var(--gutter)}
+.bar .btn{width:100%}
+@media (min-width:760px){.bar{display:none}}
+
+/* Entrada única del hero */
+@media (prefers-reduced-motion:no-preference){
+  .tab{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .tab:nth-child(2){animation-delay:.05s}.tab:nth-child(3){animation-delay:.1s}.tab:nth-child(4){animation-delay:.15s}
+  .tab:nth-child(5){animation-delay:.2s}.tab:nth-child(6){animation-delay:.25s}.tab:nth-child(7){animation-delay:.3s}
+  @keyframes rise{from{transform:translateY(18px)}to{transform:none}}
+}
+</style>
+
+</head>
+<body>
+<div class="announce"><div class="in"><span class="es">Valoración gratis por WhatsApp</span><span class="en">Free assessment on WhatsApp</span><span aria-hidden="true">•</span><span class="es">Precios en dólares</span><span class="en">Prices in US dollars</span></div></div>
+<div class="draft"><div class="in"><b>Borrador para el corte del 2 de noviembre.</b> Lo subrayado en amarillo y los recuadros rayados se llenan con la doctora antes de publicar: fotos, RETHUS, precio del paquete, hotel y reseñas.</div></div>
+
+<header class="top">
+  <div class="in">
+    <div class="brand"><b>Dra. Catalina Beltrán</b><span class="es">Odontología estética · Medellín</span><span class="en">Cosmetic dentistry · Medellín</span></div>
+    <div class="top-r">
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" id="btn-es" data-set="es" aria-pressed="true">ES</button>
+        <button type="button" id="btn-en" data-set="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-wa btn-sm wa wa-mini" id="cta-nav" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="in">
+      <div class="hero-copy">
+        <p class="kicker"><span class="es">Carillas de porcelana E-max y resina en El Poblado</span><span class="en">E-max porcelain and composite veneers in El Poblado</span></p>
+        <h1><span class="es">La sonrisa que siempre quisiste</span><span class="en">The smile you always wanted</span><span class="alt"><span class="es">diseñada antes de empezar.</span><span class="en">designed before we begin.</span></span></h1>
+        <p class="lead muted"><span class="es">Envía 3 fotos por WhatsApp. La Dra. Catalina revisa tu caso y te da un precio cerrado en dólares. Viajas una sola vez, mínimo 4 días.</span><span class="en">Send 3 photos on WhatsApp. Dr. Catalina reviews your case and gives you a fixed price in US dollars. You travel once, for at least 4 days.</span></p>
+        <div class="actions">
+          <a class="btn btn-wa wa" id="cta-top" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.5-.3z"/></svg>
+            <span class="es">Quiero mi valoración gratis</span><span class="en">Get my free assessment</span>
+          </a>
+          <a class="btn btn-ghost" href="#precios"><span class="es">Ver precios</span><span class="en">See prices</span></a>
+        </div>
+        <div class="assure">
+          <span class="es">Gratis y sin depósito</span><span class="en">Free, no deposit</span>
+          <span class="es">Respuesta el mismo día</span><span class="en">Same-day reply</span>
+          <span class="es">Español e inglés</span><span class="en">English and Spanish</span>
+        </div>
+      </div>
+
+      <div class="shade" aria-label="Guía de tonos de porcelana">
+        <div class="shade-head"><b><span class="es">Elige tu blanco</span><span class="en">Choose your white</span></b><span class="es">Toca un tono</span><span class="en">Tap a shade</span></div>
+        <div class="tabs" id="tabs"></div>
+        <div class="shade-note"><div class="swatch" id="swatch"></div><p id="shade-text"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Franja de confianza -->
+  <div class="strip">
+    <div class="in">
+      <div class="item"><strong>5,0 ★</strong><span class="es">en reseñas de Google</span><span class="en">on Google reviews</span></div>
+      <div class="item"><strong>USD 380</strong><span class="es">por diente en porcelana</span><span class="en">per porcelain tooth</span></div>
+      <div class="item"><strong><span class="es">4 días</span><span class="en">4 days</span></strong><span class="es">en Medellín</span><span class="en">in Medellín</span></div>
+      <div class="item"><strong>−70%</strong><span class="es">frente a EE. UU.</span><span class="en">vs. US prices</span></div>
+    </div>
+  </div>
+
+  <!-- Cómo funciona -->
+  <section class="band light">
+    <div class="in">
+      <div class="sec-head">
+        <h2><span class="es">Tres pasos, un solo viaje</span><span class="en">Three steps, one trip</span></h2>
+      </div>
+      <ol class="steps">
+        <li><h3><span class="es">Envía 3 fotos</span><span class="en">Send 3 photos</span></h3><p><span class="es">Por WhatsApp, con tu celular. Te mostramos un ejemplo de cómo tomarlas. No necesitas radiografías.</span><span class="en">On WhatsApp, with your phone. We show you an example. No X-rays needed.</span></p></li>
+        <li><h3><span class="es">Recibe tu valoración</span><span class="en">Get your assessment</span></h3><p><span class="es">La doctora te dice qué opción te conviene, cuántos dientes tratar y el precio cerrado. Si prefieres, por videollamada.</span><span class="en">The doctor tells you which option fits, how many teeth to treat and your fixed price. By video call if you prefer.</span></p></li>
+        <li><h3><span class="es">Viaja y vuelve sonriendo</span><span class="en">Travel and fly home smiling</span></h3><p><span class="es">Pruebas tu diseño en boca antes de empezar y regresas con tu sonrisa terminada.</span><span class="en">You try your design on before any work starts and fly home with your finished smile.</span></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Antes y después -->
+  <section class="band">
+    <div class="in ba-grid">
+      <div class="compare" id="compare" style="--pos:50%">
+        <div class="pane before" id="pane-before"><span>Foto ANTES · caso 1<br>(pedir a la doctora)</span></div>
+        <div class="pane after" id="pane-after"><span>Foto DESPUÉS · caso 1<br>(pedir a la doctora)</span></div>
+        <span class="tag l"><span class="es">Antes</span><span class="en">Before</span></span>
+        <span class="tag r"><span class="es">Después</span><span class="en">After</span></span>
+        <div class="handle"></div>
+        <input type="range" id="ba-range" min="0" max="100" value="50" aria-label="Comparar antes y después">
+      </div>
+      <div class="sec-head" style="margin:0">
+        <h2><span class="es">Pacientes reales, resultados naturales</span><span class="en">Real patients, natural results</span></h2>
+        <p class="muted"><span class="es">Desliza para comparar. Cada sonrisa se diseña según la cara, el tono de piel y la mordida de cada paciente.</span><span class="en">Slide to compare. Each smile is designed around the patient's face, skin tone and bite.</span></p>
+        <div class="cases" role="group" aria-label="Casos">
+          <button type="button" class="chip" id="case-1" data-case="1" aria-pressed="true"><span class="es">Caso 1</span><span class="en">Case 1</span></button>
+          <button type="button" class="chip" id="case-2" data-case="2" aria-pressed="false"><span class="es">Caso 2</span><span class="en">Case 2</span></button>
+          <button type="button" class="chip" id="case-3" data-case="3" aria-pressed="false"><span class="es">Caso 3</span><span class="en">Case 3</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctora -->
+  <section class="band light">
+    <div class="in doc">
+      <div class="portrait">Retrato de la doctora<br>(foto vertical, fondo claro)</div>
+      <div class="doc-copy">
+        <h2>Dra. Catalina Beltrán</h2>
+        <p class="lead muted"><span class="es">Ella misma hace tu valoración, tu diseño y tu tratamiento. Sin intermediarios: la persona que ves en la videollamada es la que te atiende en Medellín.</span><span class="en">She does your assessment, design and treatment herself. The person you meet on the video call is the one who treats you in Medellín.</span></p>
+        <ul class="creds">
+          <li><span class="es">Especialidad</span><span class="en">Field</span><span class="es">Odontología estética</span><span class="en">Cosmetic dentistry</span></li>
+          <li><span class="es">Formación</span><span class="en">Training</span><span class="pend">(por confirmar)</span></li>
+          <li><span>RETHUS</span><span class="pend">(por confirmar)</span></li>
+          <li><span class="es">Consultorio</span><span class="en">Office</span><span>Cra 25 #12 Sur 59, El Poblado</span></li>
+        </ul>
+        <a class="textlink" href="https://web.sispro.gov.co/THS/Cliente/ConsultasPublicas/ConsultaPublicaDeTHxIdentificacion.aspx" target="_blank" rel="noopener"><span class="es">Verifica su registro en el Ministerio de Salud de Colombia</span><span class="en">Verify her license with Colombia's Ministry of Health</span></a>
+      </div>
+    </div>
+
+    <!-- Pacientes reales -->
+    <div class="in patients">
+      <div class="pat-head">
+        <h3><span class="es">Pacientes que viajaron a Medellín por su sonrisa</span><span class="en">Patients who flew to Medellín for their smile</span></h3>
+        <p class="muted pat-hint" aria-hidden="true"><span class="es">Desliza →</span><span class="en">Swipe →</span></p>
+      </div>
+      <div class="pat-track" role="list">
+        <figure role="listitem">
+          <img src="img/paciente-1.webp" width="305" height="540" loading="lazy" decoding="async" alt="Paciente sonriendo junto a la doctora en el consultorio">
+          <figcaption><span class="pend">Nombre · país</span></figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="img/paciente-2.webp" width="313" height="540" loading="lazy" decoding="async" alt="Paciente con su nueva sonrisa en Medellín">
+          <figcaption><span class="pend">Nombre · país</span></figcaption>
+        </figure>
+        <figure role="listitem">
+          <img src="img/paciente-3.webp" width="238" height="540" loading="lazy" decoding="async" alt="Paciente joven en el sillón del consultorio después de su tratamiento">
+          <figcaption><span class="pend">Nombre · país</span></figcaption>
+        </figure>
+      </div>
+      <a class="btn btn-wa wa" id="cta-pacientes" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Quiero mi valoración gratis</span><span class="en">Get my free assessment</span></a>
+    </div>
+  </section>
+
+  <!-- Precios -->
+  <section class="band" id="precios">
+    <div class="in">
+      <div class="sec-head">
+        <h2><span class="es">Porcelana E-max</span><span class="en">E-max porcelain</span><span class="alt"><span class="es">precio de Medellín, en dólares.</span><span class="en">Medellín prices, in US dollars.</span></span></h2>
+        <p class="muted"><span class="es">Sabes cuánto pagas antes de comprar el vuelo.</span><span class="en">You know what you pay before you book your flight.</span></p>
+      </div>
+      <div class="price-grid">
+        <div>
+          <div class="compare-rows">
+            <div class="row"><span class="what"><span class="es">Carilla de porcelana E-max</span><span class="en">E-max porcelain veneer</span><small><span class="es">por diente</span><span class="en">per tooth</span></small></span><span class="us">US 1.000–2.500</span><span class="med">380</span></div>
+            <div class="row"><span class="what"><span class="es">Carilla de resina</span><span class="en">Composite veneer</span><small><span class="es">por diente</span><span class="en">per tooth</span></small></span><span class="us">US 400–1.500</span><span class="med">145</span></div>
+            <div class="row"><span class="what"><span class="es">10 carillas de porcelana</span><span class="en">10 porcelain veneers</span><small><span class="es">sonrisa superior</span><span class="en">upper smile</span></small></span><span class="us">US 10.000+</span><span class="med">3.800</span></div>
+          </div>
+          <p class="fine"><span class="es">Tachado: rangos aproximados publicados en EE. UU. El precio final de tu caso te lo da la doctora en la valoración.</span><span class="en">Struck through: approximate published US ranges. Your exact price comes from the doctor's assessment.</span></p>
+        </div>
+        <div class="pkg">
+          <div class="amount">USD <span class="pend">5.900</span><small><span class="es">Sonrisa completa · 20 carillas de porcelana E-max</span><span class="en">Full smile · 20 E-max porcelain veneers</span></small></div>
+          <div class="incl">
+            <div class="yes"><h3><span class="es">Incluye</span><span class="en">Included</span></h3><ul>
+              <li><span class="es">Valoración y diseño digital</span><span class="en">Assessment and digital design</span></li>
+              <li><span class="es">Prueba en boca antes de empezar</span><span class="en">Trial smile before any work</span></li>
+              <li><span class="es">Limpieza previa</span><span class="en">Cleaning beforehand</span></li>
+              <li><span class="es">Garantía por escrito</span><span class="en">Written warranty</span> <span class="pend">(?)</span></li>
+              <li><span class="es">Control por videollamada</span><span class="en">Video follow-up at home</span></li>
+            </ul></div>
+            <div class="no"><h3><span class="es">No incluye</span><span class="en">Not included</span></h3><ul>
+              <li><span class="es">Vuelos</span><span class="en">Flights</span></li>
+              <li><span class="es">Hotel; te recomendamos uno cerca</span><span class="en">Hotel; we recommend one nearby</span> <span class="pend">(?)</span></li>
+            </ul></div>
+          </div>
+          <a class="btn btn-wa wa" id="cta-pkg" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Quiero saber si aplico</span><span class="en">See if I qualify</span></a>
+          <p class="muted-l"><span class="es">La valoración no tiene costo ni pide depósito.</span><span class="en">The assessment is free, with no deposit.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Viaje -->
+  <section class="band light">
+    <div class="in">
+      <div class="sec-head">
+        <h2><span class="es">Tus 4 días en Medellín</span><span class="en">Your 4 days in Medellín</span></h2>
+        <p class="muted"><span class="es">Calendario orientativo; la doctora lo ajusta a tu caso.</span><span class="en">Typical schedule; the doctor adjusts it to your case.</span></p>
+      </div>
+      <ol class="trip">
+        <li><span class="d"><span class="es">Día 1</span><span class="en">Day 1</span></span><p><span class="es">Examen, limpieza, escaneo y prueba de tu diseño en boca. Apruebas el resultado.</span><span class="en">Exam, cleaning, scan and an in-mouth trial of your design. You approve the look.</span></p></li>
+        <li><span class="d"><span class="es">Día 2</span><span class="en">Day 2</span></span><p><span class="es">Preparación de los dientes y carillas provisionales.</span><span class="en">Tooth preparation and temporary veneers.</span></p></li>
+        <li><span class="d"><span class="es">Día 3</span><span class="en">Day 3</span></span><p><span class="es">Tus carillas se fabrican. Día libre para conocer la ciudad.</span><span class="en">Your veneers are made. A free day to enjoy the city.</span></p></li>
+        <li><span class="d"><span class="es">Día 4</span><span class="en">Day 4</span></span><p><span class="es">Cementado, ajustes y control final.</span><span class="en">Bonding, adjustments and final check.</span></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Reseñas -->
+  <section class="band">
+    <div class="in">
+      <div class="sec-head">
+        <h2><span class="es">Lo que dicen los pacientes</span><span class="en">What patients say</span></h2>
+      </div>
+      <div class="reviews">
+        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 1, copiada tal cual de la ficha de Google.</p><small>Nombre · país · fecha</small></div>
+        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 2, sin editar.</p><small>Nombre · país · fecha</small></div>
+        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 3, idealmente de un paciente extranjero.</p><small>Nombre · país · fecha</small></div>
+      </div>
+      <p style="margin-top:28px"><a class="textlink" style="color:var(--aqua)" href="https://share.google/0xDWTkSCVJ1ShZjg7" target="_blank" rel="noopener"><span class="es">Ver todas las reseñas en Google</span><span class="en">See all reviews on Google</span></a></p>
+    </div>
+  </section>
+
+  <!-- Antes de decidir + preguntas -->
+  <section class="band light">
+    <div class="in two">
+      <div>
+        <div class="sec-head"><h2><span class="es">Antes de decidir</span><span class="en">Before you decide</span></h2></div>
+        <ul class="know">
+          <li><b class="es">La porcelana no se revierte</b><b class="en">Porcelain is permanent</b><span class="es">Se retira una capa fina de esmalte para colocarla.</span><span class="en">A thin layer of enamel is removed to place it.</span></li>
+          <li><b class="es">Primero la salud</b><b class="en">Health comes first</b><span class="es">Caries, encías inflamadas o bruxismo se tratan antes. La doctora te lo dice en la valoración.</span><span class="en">Cavities, gum problems or grinding are treated first. The doctor tells you in the assessment.</span></li>
+          <li><b class="es">Las fotos orientan</b><b class="en">Photos are a guide</b><span class="es">El plan final se confirma en la consulta presencial.</span><span class="en">The final plan is confirmed in person.</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="sec-head"><h2><span class="es">Preguntas frecuentes</span><span class="en">Questions</span></h2></div>
+        <details><summary><span class="es">¿La valoración tiene algún costo?</span><span class="en">Does the assessment cost anything?</span></summary><p><span class="es">No. Envías tus fotos, la doctora revisa tu caso y te da el precio. No pedimos depósito.</span><span class="en">No. You send your photos, the doctor reviews your case and gives you a price. No deposit.</span></p></details>
+        <details><summary><span class="es">¿Porcelana o resina?</span><span class="en">Porcelain or composite?</span></summary><p><span class="es">La porcelana E-max dura más y no se mancha; la resina cuesta menos y se hace más rápido. La doctora te recomienda según tus dientes.</span><span class="en">E-max porcelain lasts longer and resists stains; composite costs less and is quicker. The doctor recommends based on your teeth.</span></p></details>
+        <details><summary><span class="es">¿Cuántos días debo quedarme?</span><span class="en">How long should I stay?</span></summary><p><span class="es">Mínimo 4 días para porcelana. La resina puede tomar menos.</span><span class="en">At least 4 days for porcelain. Composite can take less.</span></p></details>
+        <details><summary><span class="es">¿Cómo pago?</span><span class="en">How do I pay?</span></summary><p><span class="pend"><span class="es">Por confirmar con la doctora: efectivo, tarjeta, transferencia y tasa de cambio.</span><span class="en">To confirm with the doctor: cash, card, transfer and exchange rate.</span></span></p></details>
+        <details><summary><span class="es">¿Y si algo falla cuando ya regresé?</span><span class="en">What if something fails once I'm home?</span></summary><p><span class="es">Tienes seguimiento por WhatsApp y videollamada, y la garantía por escrito.</span><span class="en">You get follow-up on WhatsApp and video calls, plus a written warranty.</span></p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cierre -->
+  <section class="band closing">
+    <div class="in">
+      <h2><span class="es">Empieza tu cambio</span><span class="en">Start your change</span><span class="alt"><span class="es">con tres fotos.</span><span class="en">with three photos.</span></span></h2>
+      <div class="actions">
+        <a class="btn btn-wa wa" id="cta-end" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Escribir por WhatsApp</span><span class="en">Message us on WhatsApp</span></a>
+        <p class="addr">+57 320 311 8517<br>Cra 25 #12 Sur 59, El Poblado, Medellín</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="in">
+  <span>Dra. Catalina Beltrán, odontología estética, Medellín, Colombia</span>
+  <span class="es">Los resultados varían según cada paciente. Precios en dólares estadounidenses, sujetos a valoración.</span><span class="en">Results vary by patient. Prices in US dollars, subject to assessment.</span>
+</div></footer>
+
+<div class="bar"><a class="btn btn-wa wa" id="cta-bar" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Quiero mi valoración gratis</span><span class="en">Get my free assessment</span></a></div>
+
+<script>
+/* ===== Seguimiento =====
+   Al publicar en el dominio real se llenan estos datos. En esta vista previa quedan vacíos y nada se envía.
+   AW_ID y AW_LABEL: la acción de conversión "Clic en WhatsApp" de Google Ads.
+   SHEET_URL: un Apps Script publicado como aplicación web que agrega una fila (ref, gclid, idioma, botón, fecha) a la hoja.
+   Cada clic lleva un código corto (ej. DS-7K2Q) en el mensaje de WhatsApp. Alejandra lo anota en MENSAJES DIENTES; cuando el
+   paciente agenda o paga, el código se cruza con el gclid y se sube a Google Ads como conversión offline. */
+const CFG={AW_ID:'',AW_LABEL:'',SHEET_URL:'',PHONE:'573203118517'};
+const MSG={es:'Hola quiero mi valoracion personalizada gratis para mi diseno de sonrisa',en:'Hi I would like my free smile design assessment'};
+const q=new URLSearchParams(location.search);
+function store(k,v){try{if(v!==undefined)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)}catch(e){return v??null}}
+const click={gclid:q.get('gclid')||store('gclid')||'',gbraid:q.get('gbraid')||'',wbraid:q.get('wbraid')||'',camp:q.get('utm_campaign')||''};
+if(click.gclid)store('gclid',click.gclid);
+let ref=store('ref');
+if(!ref){const a='23456789ABCDEFGHJKMNPQRSTVWXYZ';ref='DS-'+Array.from({length:4},()=>a[Math.floor(Math.random()*a.length)]).join('');store('ref',ref);}
+
+/* Guía de tonos */
+const SHADES=[
+  {id:'A3',c:['#c9b18a','#d8c29c','#e6d6b8'],es:'un tono natural cálido, como el de la mayoría de dientes sin blanquear',en:'a warm natural shade, like most unbleached teeth'},
+  {id:'A2',c:['#d3bd97','#e0cdaa','#ece0c6'],es:'natural y cálido; se ve muy discreto',en:'natural and warm; very discreet'},
+  {id:'B2',c:['#d7c7a4','#e4d6b8','#efe5d0'],es:'natural con un toque más claro',en:'natural with a lighter touch'},
+  {id:'A1',c:['#dccfb2','#e8dec6','#f2ebdc'],es:'claro y natural; el más pedido para un cambio que no se note "hecho"',en:'light and natural; the most requested for a result that doesn’t look done'},
+  {id:'B1',c:['#e2d9c3','#ece5d4','#f5f1e7'],es:'blanco luminoso sin perder naturalidad',en:'bright white that still looks natural'},
+  {id:'BL2',c:['#e8e3d6','#f0ece2','#f8f6f0'],es:'blanco brillante, estilo sonrisa de cámara',en:'bright, camera-ready white'},
+  {id:'BL1',c:['#eeebe3','#f5f3ed','#fcfbf8'],es:'el blanco más intenso de la guía',en:'the brightest white in the guide'}
+];
+let lang=(q.get('lang')||'').toLowerCase()==='en'?'en':'es';
+let shadeIdx=3;
+const tabsEl=document.getElementById('tabs');
+SHADES.forEach((s,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='tab';b.id='shade-'+s.id;
+  b.style.setProperty('--c1',s.c[0]);b.style.setProperty('--c2',s.c[1]);b.style.setProperty('--c3',s.c[2]);
+  b.innerHTML='<span class="stick"></span><span class="tooth"></span><span>'+s.id+'</span>';
+  b.addEventListener('click',()=>{shadeIdx=i;renderShade();});
+  tabsEl.appendChild(b);
+});
+function renderShade(){
+  const s=SHADES[shadeIdx];
+  tabsEl.querySelectorAll('.tab').forEach((b,i)=>b.setAttribute('aria-pressed',String(i===shadeIdx)));
+  document.getElementById('swatch').style.setProperty('--sel',s.c[2]);
+  document.getElementById('shade-text').innerHTML=lang==='es'
+    ? '<b>'+s.id+':</b> '+s.es+'. Tu tono final lo eliges con la doctora en la valoración.'
+    : '<b>'+s.id+':</b> '+s.en+'. You choose your final shade with the doctor.';
+}
+
+/* Comparador antes/después */
+const cmp=document.getElementById('compare'),rng=document.getElementById('ba-range');
+rng.addEventListener('input',()=>cmp.style.setProperty('--pos',rng.value+'%'));
+document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
+  document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',String(x===c)));
+  const n=c.dataset.case;
+  document.querySelector('#pane-before span').innerHTML='Foto ANTES · caso '+n+'<br>(pedir a la doctora)';
+  document.querySelector('#pane-after span').innerHTML='Foto DESPUÉS · caso '+n+'<br>(pedir a la doctora)';
+  rng.value=50;cmp.style.setProperty('--pos','50%');
+}));
+
+/* Idioma + enlaces de WhatsApp */
+function setLang(l){
+  lang=l;document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===l)));
+  const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(MSG[l]+' (ref '+ref+')');
+  document.querySelectorAll('a.wa').forEach(a=>a.href=href);
+  renderShade();
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
+setLang(lang);
+
+/* Conversiones */
+if(CFG.AW_ID){
+  const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+CFG.AW_ID;document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',CFG.AW_ID);
+}
+document.querySelectorAll('a.wa').forEach(a=>a.addEventListener('click',()=>{
+  try{if(window.gtag&&CFG.AW_LABEL)gtag('event','conversion',{send_to:CFG.AW_ID+'/'+CFG.AW_LABEL,transaction_id:ref});}catch(e){}
+  try{if(CFG.SHEET_URL)navigator.sendBeacon(CFG.SHEET_URL,JSON.stringify({ref,lang,boton:a.id,ts:new Date().toISOString(),...click}));}catch(e){}
+}));
+</script>
+
+</body>
+</html>
