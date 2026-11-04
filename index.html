@@ -215,7 +215,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pat-track{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);scroll-padding-inline:var(--gutter)}
 .pat-track::-webkit-scrollbar{display:none}
 .pat-track figure{margin:0;scroll-snap-align:start;min-width:0}
-.pat-track img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 28%;border:1px solid var(--line-d);background:var(--ink-2)}
+.pat-track img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 30%;border:1px solid var(--line-d);background:var(--ink-2)}
 .pat-track figcaption{margin-top:10px;font-size:.85rem;color:var(--muted-d);letter-spacing:.04em}
 .patients .btn{align-self:flex-start}
 @media (min-width:820px){
@@ -401,15 +401,15 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       </div>
       <div class="pat-track" role="list">
         <figure role="listitem">
-          <img src="img/paciente-1.webp" width="305" height="540" loading="lazy" decoding="async" alt="Paciente de Estados Unidos junto a la doctora en el consultorio">
+          <img src="img/paciente-1.webp" srcset="img/paciente-1.webp 600w, img/paciente-1-900.webp 900w" sizes="(min-width:820px) 290px, 68vw" width="600" height="800" loading="lazy" decoding="async" alt="Paciente de Estados Unidos junto a la doctora en el consultorio">
           <figcaption><span class="es">Paciente de Estados Unidos</span><span class="en">Patient from the United States</span></figcaption>
         </figure>
         <figure role="listitem">
-          <img src="img/paciente-2.webp" width="313" height="540" loading="lazy" decoding="async" alt="Paciente de Italia con su nueva sonrisa en Medellín">
+          <img src="img/paciente-2.webp" srcset="img/paciente-2.webp 600w, img/paciente-2-900.webp 900w" sizes="(min-width:820px) 290px, 68vw" width="600" height="800" loading="lazy" decoding="async" alt="Paciente de Italia con su nueva sonrisa en Medellín">
           <figcaption><span class="es">Paciente de Italia</span><span class="en">Patient from Italy</span></figcaption>
         </figure>
         <figure role="listitem">
-          <img src="img/paciente-3.webp" width="238" height="540" loading="lazy" decoding="async" alt="Paciente de Manizales en el consultorio después de su tratamiento">
+          <img src="img/paciente-3.webp" srcset="img/paciente-3.webp 600w, img/paciente-3-900.webp 900w" sizes="(min-width:820px) 290px, 68vw" width="600" height="800" loading="lazy" decoding="async" alt="Paciente de Manizales en el consultorio después de su tratamiento">
           <figcaption><span class="es">Paciente de Manizales, Colombia</span><span class="en">Patient from Manizales, Colombia</span></figcaption>
         </figure>
       </div>
