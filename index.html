@@ -221,6 +221,17 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .pat-hint{display:none}
 }
 
+/* Reseñas de Google */
+.gr{display:grid;gap:24px;align-items:stretch}
+@media (min-width:860px){.gr{grid-template-columns:.8fr 1.2fr}}
+.gr-score{border:1px solid rgba(201,169,110,.45);padding:clamp(24px,4vw,36px);display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.gr-num{font-family:var(--display);font-size:clamp(3.2rem,9vw,4.6rem);line-height:1}
+.gr-score .stars{color:var(--aqua);letter-spacing:4px;font-size:1.2rem}
+.gr-score p{color:var(--muted-d)}
+.gr-score .btn{margin-top:8px}
+.gr-map{min-height:300px;border:1px solid var(--line-d);background:var(--ink-2)}
+.gr-map iframe{display:block;width:100%;height:100%;min-height:300px;border:0;filter:grayscale(.35) contrast(1.05)}
+
 /* Reseñas */
 .reviews{display:grid;gap:18px}
 @media (min-width:820px){.reviews{grid-template-columns:repeat(3,1fr)}}
@@ -272,7 +283,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
 </head>
 <body>
 <div class="announce"><div class="in"><span class="es">Valoración gratis por WhatsApp</span><span class="en">Free assessment on WhatsApp</span><span aria-hidden="true">•</span><span class="es">Precios en dólares</span><span class="en">Prices in US dollars</span></div></div>
-<div class="draft"><div class="in"><b>Borrador para el corte del 2 de noviembre.</b> Lo subrayado en amarillo y los recuadros rayados se llenan con la doctora antes de publicar: fotos, RETHUS, precio del paquete, hotel y reseñas.</div></div>
+<div class="draft"><div class="in"><b>Borrador.</b> Falta con la doctora: fotos de antes y después, nombres de los pacientes, formación y RETHUS, y precio del paquete.</div></div>
 
 <header class="top">
   <div class="in">
@@ -320,7 +331,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   <!-- Franja de confianza -->
   <div class="strip">
     <div class="in">
-      <div class="item"><strong>5,0 ★</strong><span class="es">en reseñas de Google</span><span class="en">on Google reviews</span></div>
+      <div class="item"><strong>5,0 ★</strong><span class="es">23 opiniones en Google</span><span class="en">23 Google reviews</span></div>
       <div class="item"><strong>USD 380</strong><span class="es">por diente en porcelana</span><span class="en">per porcelain tooth</span></div>
       <div class="item"><strong><span class="es">4 días</span><span class="en">4 days</span></strong><span class="es">en Medellín</span><span class="en">in Medellín</span></div>
       <div class="item"><strong>−70%</strong><span class="es">frente a EE. UU.</span><span class="en">vs. US prices</span></div>
@@ -428,12 +439,11 @@ footer .in{display:flex;flex-direction:column;gap:6px}
               <li><span class="es">Valoración y diseño digital</span><span class="en">Assessment and digital design</span></li>
               <li><span class="es">Prueba en boca antes de empezar</span><span class="en">Trial smile before any work</span></li>
               <li><span class="es">Limpieza previa</span><span class="en">Cleaning beforehand</span></li>
-              <li><span class="es">Garantía por escrito</span><span class="en">Written warranty</span> <span class="pend">(?)</span></li>
               <li><span class="es">Control por videollamada</span><span class="en">Video follow-up at home</span></li>
             </ul></div>
             <div class="no"><h3><span class="es">No incluye</span><span class="en">Not included</span></h3><ul>
               <li><span class="es">Vuelos</span><span class="en">Flights</span></li>
-              <li><span class="es">Hotel; te recomendamos uno cerca</span><span class="en">Hotel; we recommend one nearby</span> <span class="pend">(?)</span></li>
+              <li><span class="es">Hotel; te recomendamos el Ibis Medellín, a 300 m del consultorio</span><span class="en">Hotel; we recommend the Ibis Medellín, 300 m from the office</span></li>
             </ul></div>
           </div>
           <a class="btn btn-wa wa" id="cta-pkg" href="https://api.whatsapp.com/send?phone=573203118517" target="_blank" rel="noopener"><span class="es">Quiero saber si aplico</span><span class="en">See if I qualify</span></a>
@@ -465,12 +475,18 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <div class="sec-head">
         <h2><span class="es">Lo que dicen los pacientes</span><span class="en">What patients say</span></h2>
       </div>
-      <div class="reviews">
-        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 1, copiada tal cual de la ficha de Google.</p><small>Nombre · país · fecha</small></div>
-        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 2, sin editar.</p><small>Nombre · país · fecha</small></div>
-        <div class="review"><span class="stars">★★★★★</span><p>Reseña real 3, idealmente de un paciente extranjero.</p><small>Nombre · país · fecha</small></div>
+      <div class="gr">
+        <div class="gr-score">
+          <span class="gr-num">5,0</span>
+          <span class="stars" aria-hidden="true">★★★★★</span>
+          <p><span class="es">23 opiniones de pacientes en Google</span><span class="en">23 patient reviews on Google</span></p>
+          <a class="btn btn-ghost" href="https://share.google/0xDWTkSCVJ1ShZjg7" target="_blank" rel="noopener"><span class="es">Leer las opiniones</span><span class="en">Read the reviews</span></a>
+        </div>
+        <div class="gr-map">
+          <iframe title="Dra. Catalina Beltrán en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+            src="https://maps.google.com/maps?q=Dra.%20Catalina%20Beltr%C3%A1n%20-%20Dise%C3%B1o%20de%20Sonrisa%20en%20Medellin%2C%20Cra.%2025%20%2312%20Sur%2059%2C%20El%20Poblado%2C%20Medell%C3%ADn&z=16&output=embed"></iframe>
+        </div>
       </div>
-      <p style="margin-top:28px"><a class="textlink" style="color:var(--aqua)" href="https://share.google/0xDWTkSCVJ1ShZjg7" target="_blank" rel="noopener"><span class="es">Ver todas las reseñas en Google</span><span class="en">See all reviews on Google</span></a></p>
     </div>
   </section>
 
@@ -490,8 +506,8 @@ footer .in{display:flex;flex-direction:column;gap:6px}
         <details><summary><span class="es">¿La valoración tiene algún costo?</span><span class="en">Does the assessment cost anything?</span></summary><p><span class="es">No. Envías tus fotos, la doctora revisa tu caso y te da el precio. No pedimos depósito.</span><span class="en">No. You send your photos, the doctor reviews your case and gives you a price. No deposit.</span></p></details>
         <details><summary><span class="es">¿Porcelana o resina?</span><span class="en">Porcelain or composite?</span></summary><p><span class="es">La porcelana E-max dura más y no se mancha; la resina cuesta menos y se hace más rápido. La doctora te recomienda según tus dientes.</span><span class="en">E-max porcelain lasts longer and resists stains; composite costs less and is quicker. The doctor recommends based on your teeth.</span></p></details>
         <details><summary><span class="es">¿Cuántos días debo quedarme?</span><span class="en">How long should I stay?</span></summary><p><span class="es">Mínimo 4 días para porcelana. La resina puede tomar menos.</span><span class="en">At least 4 days for porcelain. Composite can take less.</span></p></details>
-        <details><summary><span class="es">¿Cómo pago?</span><span class="en">How do I pay?</span></summary><p><span class="pend"><span class="es">Por confirmar con la doctora: efectivo, tarjeta, transferencia y tasa de cambio.</span><span class="en">To confirm with the doctor: cash, card, transfer and exchange rate.</span></span></p></details>
-        <details><summary><span class="es">¿Y si algo falla cuando ya regresé?</span><span class="en">What if something fails once I'm home?</span></summary><p><span class="es">Tienes seguimiento por WhatsApp y videollamada, y la garantía por escrito.</span><span class="en">You get follow-up on WhatsApp and video calls, plus a written warranty.</span></p></details>
+        <details><summary><span class="es">¿Cómo pago?</span><span class="en">How do I pay?</span></summary><p><span class="es">En efectivo, con tarjeta o por transferencia.</span><span class="en">Cash, card or bank transfer.</span></p></details>
+        <details><summary><span class="es">¿Y si algo falla cuando ya regresé?</span><span class="en">What if something fails once I'm home?</span></summary><p><span class="es">La doctora te hace seguimiento por WhatsApp y videollamada cuando ya estás en casa.</span><span class="en">The doctor follows up with you on WhatsApp and video calls once you are home.</span></p></details>
       </div>
     </div>
   </section>
