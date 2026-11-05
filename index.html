@@ -188,6 +188,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .row .what small{display:block;color:var(--muted-d);font-size:.8rem}
 .fine{font-size:.82rem;color:var(--muted-d);margin-top:12px}
 .pkg{background:var(--ink-2);color:var(--text-l);border:1px solid rgba(201,169,110,.5);border-radius:0;padding:clamp(22px,4vw,34px);display:flex;flex-direction:column;gap:18px}
+.pkg-was{font-size:.9rem;color:var(--muted-l);margin-bottom:-8px}
+.pkg-was s{text-decoration-color:rgba(201,169,110,.7)}
+.pkg-save{display:inline-block;align-self:flex-start;background:rgba(201,169,110,.14);border:1px solid rgba(201,169,110,.5);color:var(--aqua);font-weight:500;font-size:.92rem;letter-spacing:.02em;padding:8px 12px}
 .pkg .amount{font-family:var(--display);font-size:clamp(2.8rem,7vw,3.6rem);line-height:1;font-variant-numeric:lining-nums}
 .pkg .amount small{display:block;font-family:var(--body);font-size:.9rem;color:var(--muted-l);margin-top:8px}
 .incl{display:grid;gap:18px}
@@ -456,7 +459,9 @@ footer .in{display:flex;flex-direction:column;gap:6px}
           <p class="fine"><span class="es">Tachado: rangos aproximados publicados en EE. UU. El precio final de tu caso te lo da la doctora en la valoración.</span><span class="en">Struck through: approximate published US ranges. Your exact price comes from the doctor's assessment.</span></p>
         </div>
         <div class="pkg">
+          <p class="pkg-was"><span class="es">20 carillas por separado: <s>USD 7.600</s></span><span class="en">20 veneers bought separately: <s>USD 7,600</s></span></p>
           <div class="amount">USD <span class="es">5.900</span><span class="en">5,900</span><small><span class="es">Sonrisa completa · 20 carillas de porcelana E-max</span><span class="en">Full smile · 20 E-max porcelain veneers</span></small></div>
+          <p class="pkg-save"><span class="es">Ahorras USD 1.700 · equivale a USD 295 por diente</span><span class="en">You save USD 1,700 · about USD 295 per tooth</span></p>
           <div class="incl">
             <div class="yes"><h3><span class="es">Incluye</span><span class="en">Included</span></h3><ul>
               <li><span class="es">Valoración y diseño digital</span><span class="en">Assessment and digital design</span></li>
