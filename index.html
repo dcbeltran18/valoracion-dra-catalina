@@ -44,6 +44,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+[id]{scroll-margin-top:84px}
 body{margin:0;background:var(--ink);color:var(--text-d);font:17px/1.6 var(--body);-webkit-font-smoothing:antialiased}
 html[data-lang="es"] .en, html[data-lang="en"] .es{display:none!important}
 a{color:inherit}
@@ -409,7 +410,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </section>
 
   <!-- Antes y después -->
-  <section class="band">
+  <section id="casos" class="band">
     <div class="in">
       <div class="sec-head">
         <h2><span class="es">Pacientes reales, resultados naturales</span><span class="en">Real patients, natural results</span></h2>
@@ -440,7 +441,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </section>
 
   <!-- Doctora -->
-  <section class="band light">
+  <section id="doctora" class="band light">
     <div class="in doc">
       <div class="portrait"><img src="img/dra-catalina-480.webp" srcset="img/dra-catalina-480.webp 480w, img/dra-catalina-900.webp 900w" sizes="(min-width:860px) 440px, calc(100vw - 36px)" width="480" height="640" loading="lazy" decoding="async" alt="Dra. Catalina Beltrán, odontóloga estética en Medellín"></div>
       <div class="doc-copy">
@@ -497,7 +498,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </section>
 
   <!-- Viaje -->
-  <section class="band light">
+  <section id="viaje" class="band light">
     <div class="in">
       <div class="sec-head">
         <h2><span class="es">Tus 4 días en Medellín</span><span class="en">Your 4 days in Medellín</span></h2>
@@ -513,7 +514,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </section>
 
   <!-- Reseñas -->
-  <section class="band">
+  <section id="opiniones" class="band">
     <div class="in">
       <div class="sec-head">
         <h2><span class="es">Lo que dicen los pacientes</span><span class="en">What patients say</span></h2>
@@ -569,7 +570,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
         </ul>
       </div>
       <div>
-        <div class="sec-head"><h2><span class="es">Preguntas frecuentes</span><span class="en">Questions</span></h2></div>
+        <div class="sec-head" id="preguntas"><h2><span class="es">Preguntas frecuentes</span><span class="en">Questions</span></h2></div>
         <details><summary><span class="es">¿La valoración tiene algún costo?</span><span class="en">Does the assessment cost anything?</span></summary><p><span class="es">No. Envías tus fotos, la doctora revisa tu caso y te da el precio.</span><span class="en">No. You send your photos, the doctor reviews your case and gives you a price.</span></p></details>
         <details><summary><span class="es">¿Me van a desgastar los dientes?</span><span class="en">Will my teeth be filed down?</span></summary><p><span class="es">No. La doctora no realiza ningún tipo de desgaste dental: tus dientes naturales se conservan.</span><span class="en">No. The doctor does not do any kind of tooth reduction: your natural teeth are preserved.</span></p></details>
         <details><summary><span class="es">¿Porcelana o resina?</span><span class="en">Porcelain or composite?</span></summary><p><span class="es">La porcelana E-max dura más y no se mancha; la resina cuesta menos y se hace más rápido. La doctora te recomienda según tus dientes.</span><span class="en">E-max porcelain lasts longer and resists stains; composite costs less and is quicker. The doctor recommends based on your teeth.</span></p></details>
@@ -666,6 +667,8 @@ document.querySelectorAll('.pat-hint').forEach(h=>{const t=h.closest('.patients'
   h.addEventListener('click',()=>{const f=t.querySelector('figure');const w=f?f.getBoundingClientRect().width+12:t.clientWidth*.7;
     t.scrollBy({left:(t.scrollLeft+t.clientWidth>=t.scrollWidth-4)?-t.scrollWidth:w,behavior:'smooth'});h.classList.add('seen');});
   t.addEventListener('scroll',()=>h.classList.add('seen'),{passive:true,once:true});});
+
+(()=>{const s=new URLSearchParams(location.search).get('s');const t=s&&/^[a-z]+$/.test(s)&&document.getElementById(s);if(t)setTimeout(()=>t.scrollIntoView({block:'start'}),250);})();
 </script>
 
 </body>
