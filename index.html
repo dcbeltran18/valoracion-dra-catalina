@@ -225,6 +225,16 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .pat-hint{display:none}
 }
 
+/* Video testimonio */
+.testi{display:grid;gap:22px;align-items:center;margin-bottom:clamp(32px,5vw,48px)}
+@media (min-width:760px){.testi{grid-template-columns:minmax(0,420px) 1fr;gap:40px}}
+.testi-video{margin:0;position:relative;border:1px solid rgba(201,169,110,.45);background:#000}
+.testi-play{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;border:0;background:var(--aqua);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.45)}
+.testi-play svg{width:34px;height:34px;margin-left:4px}
+.testi-video.playing .testi-play{display:none}
+.testi-video video{display:block;width:100%;height:auto;aspect-ratio:1/1;background:#000}
+.testi-quote{font-family:var(--display);font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.2;letter-spacing:.02em;margin-bottom:10px}
+
 /* Reseñas de Google */
 .gr{display:grid;gap:24px;align-items:stretch}
 @media (min-width:860px){.gr{grid-template-columns:.8fr 1.2fr}}
@@ -467,6 +477,18 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <div class="sec-head">
         <h2><span class="es">Lo que dicen los pacientes</span><span class="en">What patients say</span></h2>
       </div>
+      <div class="testi">
+        <figure class="testi-video">
+          <video controls playsinline preload="none" poster="video/testimonio-eeuu.webp" width="720" height="720" aria-label="Paciente de Estados Unidos viendo su nueva sonrisa">
+            <source src="video/testimonio-eeuu.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="testi-play" aria-label="Reproducir video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        </figure>
+        <div class="testi-copy">
+          <p class="testi-quote"><span class="es">El momento en que se ve por primera vez.</span><span class="en">The moment he sees himself for the first time.</span></p>
+          <p class="muted"><span class="es">Paciente de Estados Unidos, al terminar su tratamiento con la Dra. Catalina en Medellín.</span><span class="en">A patient from the United States, right after finishing his treatment with Dr. Catalina in Medellín.</span></p>
+        </div>
+      </div>
       <div class="gr">
         <div class="gr-score">
           <span class="gr-num">5,0</span>
@@ -557,6 +579,13 @@ document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
   });
   rng.value=50;cmp.style.setProperty('--pos','50%');
 }));
+
+/* Video testimonio */
+document.querySelectorAll('.testi-video').forEach(f=>{const v=f.querySelector('video'),b=f.querySelector('.testi-play');
+  b.addEventListener('click',()=>{v.play();});
+  v.addEventListener('play',()=>f.classList.add('playing'));
+  v.addEventListener('ended',()=>f.classList.remove('playing'));
+});
 
 /* Idioma + enlaces de WhatsApp */
 function setLang(l){
