@@ -238,6 +238,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .testi-play svg{width:34px;height:34px;margin-left:4px}
 .testi-video.playing .testi-play{display:none}
 .testi-video video{display:block;width:100%;height:auto;aspect-ratio:1/1;background:#000}
+.testi-v .testi-video video{aspect-ratio:9/16}
+@media (min-width:760px){.testi-v{grid-template-columns:1fr minmax(0,320px)}.testi-v .testi-video{order:2}.testi-v .testi-copy{text-align:right;justify-self:end}}
+@media (max-width:759px){.testi-v .testi-video{max-width:340px;width:100%;justify-self:center}}
 .testi-quote{font-family:var(--display);font-size:clamp(1.5rem,3.6vw,2.1rem);line-height:1.2;letter-spacing:.02em;margin-bottom:10px}
 
 /* Reseñas de Google */
@@ -495,6 +498,18 @@ footer .in{display:flex;flex-direction:column;gap:6px}
         <div class="testi-copy">
           <p class="testi-quote"><span class="es">El momento en que se ve por primera vez.</span><span class="en">The moment he sees himself for the first time.</span></p>
           <p class="muted"><span class="es">Paciente de Estados Unidos, al terminar su tratamiento con la Dra. Catalina en Medellín.</span><span class="en">A patient from the United States, right after finishing his treatment with Dr. Catalina in Medellín.</span></p>
+        </div>
+      </div>
+      <div class="testi testi-v">
+        <figure class="testi-video">
+          <video controls playsinline preload="none" poster="video/testimonio-2.webp" width="720" height="1280" aria-label="Paciente contando su experiencia con la Dra. Catalina">
+            <source src="video/testimonio-2.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="testi-play" aria-label="Reproducir video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+        </figure>
+        <div class="testi-copy">
+          <p class="testi-quote"><span class="es">«Esto es perfecto.»</span><span class="en">“This is perfect.”</span></p>
+          <p class="muted"><span class="es">Un paciente cuenta su experiencia el día que terminó su diseño de sonrisa en Medellín.</span><span class="en">A patient shares his experience on the day he finished his smile design in Medellín.</span></p>
         </div>
       </div>
       <div class="gr">
