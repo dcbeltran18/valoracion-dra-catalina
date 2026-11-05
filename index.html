@@ -119,11 +119,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(28px,4vw,44px);max-width:40em}
 
 /* Pasos */
-.steps{list-style:none;margin:0;padding:0;display:grid;gap:28px;counter-reset:s}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:36px;counter-reset:s}
 @media (min-width:820px){.steps{grid-template-columns:repeat(3,1fr);gap:40px}}
-.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;border-top:1px solid var(--line-l);padding-top:18px;min-width:0}
-.steps li::before{content:counter(s);font-family:var(--display);font-size:2.6rem;line-height:1;color:var(--teal)}
-.steps p{color:var(--muted-l)}
+.steps li{counter-increment:s;display:grid;grid-template-columns:auto 1fr;column-gap:22px;align-items:start;min-width:0}
+.steps li::before{content:counter(s);grid-row:1 / span 2;font-family:var(--display);font-size:clamp(3.4rem,7vw,4.4rem);line-height:.85;color:var(--teal);min-width:.6em;text-align:center}
+.steps li h3,.steps li p{grid-column:2;border-left:1px solid var(--line-l);padding-left:22px;margin:0}
+.steps li h3{padding-top:2px;padding-bottom:10px;letter-spacing:.04em}
+.steps li p{color:var(--muted-l);padding-bottom:4px}
 
 /* Antes y después lado a lado */
 .sbs{margin-top:clamp(36px,6vw,56px)}
