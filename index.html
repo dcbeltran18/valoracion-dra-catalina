@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Diseño de sonrisa en Medellín con la Dra. Catalina Beltrán. Valoración gratis por WhatsApp y precio en dólares para pacientes que viven fuera de Colombia.">
+<meta name="description" content="Diseño de sonrisa en Medellín con la Dra. Catalina Beltrán. Carillas sin desgaste dental, valoración gratis por WhatsApp y precio en dólares para pacientes que viven fuera de Colombia.">
 <meta name="theme-color" content="#080807">
 <title>Diseño de sonrisa en Medellín | Dra. Catalina Beltrán</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -628,6 +628,8 @@ document.querySelectorAll('.testi-video').forEach(f=>{const v=f.querySelector('v
 /* Idioma + enlaces de WhatsApp */
 function setLang(l){
   lang=l;document.documentElement.dataset.lang=l;document.documentElement.lang=l;
+  const META={es:['Diseño de sonrisa en Medellín | Dra. Catalina Beltrán','Diseño de sonrisa en Medellín con la Dra. Catalina Beltrán. Carillas sin desgaste dental, valoración gratis por WhatsApp y precio en dólares para pacientes que viven fuera de Colombia.'],en:['Veneers in Medellín, Colombia | Dr. Catalina Beltrán','Veneers with no tooth reduction in Medellín, Colombia. Free assessment on WhatsApp and a fixed price in US dollars: 20 E-max veneers for USD 5,900.']};
+  document.title=META[l][0];const md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',META[l][1]);
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===l)));
   const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(MSG[l]+ref+'.');
   document.querySelectorAll('a.wa').forEach(a=>a.href=href);
