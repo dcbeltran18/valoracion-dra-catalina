@@ -28,9 +28,9 @@
   --porcelain:#100f0d;  /* banda alterna */
   --paper:#ffffff;
   --text-d:#efe9df;     /* marfil */
-  --muted-d:#a39b8e;
+  --muted-d:#efe9df;
   --text-l:#efe9df;
-  --muted-l:#a39b8e;
+  --muted-l:#efe9df;
   --line-d:#2b271f; --line-l:#2b271f;
   --aqua:#c9a96e;       /* dorado */
   --teal:#c9a96e;
@@ -110,7 +110,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
 /* Pacientes en el hero */
 .hero-pat{margin-top:0;min-width:0}
-.hero-pat .pat-hint{display:block}
+.hero-pat .pat-hint{display:inline-flex}
 @media (min-width:900px){
   .hero-pat .pat-track{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:47%;overflow-x:auto;margin-inline:0;padding-inline:0;max-width:none}
 }
@@ -235,7 +235,11 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .patients{margin-top:clamp(44px,7vw,72px);display:flex;flex-direction:column;gap:20px}
 .pat-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 .pat-head h3{text-transform:uppercase;letter-spacing:.06em;font-size:1.1rem}
-.pat-hint{font-size:.82rem;white-space:nowrap}
+.pat-hint{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:500 .88rem var(--body);letter-spacing:.04em;color:var(--text-d);background:transparent;border:1px solid var(--aqua);border-radius:999px;padding:7px 13px 7px 15px;cursor:pointer;flex:none}
+.pat-hint .arr{display:inline-block;color:var(--aqua);font-size:1.05rem;line-height:1;animation:nudge 1.3s ease-in-out infinite}
+.pat-hint.seen .arr{animation:none}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+@media (prefers-reduced-motion:reduce){.pat-hint .arr{animation:none}}
 .pat-track{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-inline:calc(-1 * var(--gutter)) calc(-1 * var(--gutter-r));padding-inline:var(--gutter) var(--gutter-r);scroll-padding-inline:var(--gutter)}
 .pat-track::-webkit-scrollbar{display:none}
 .pat-track figure{margin:0;scroll-snap-align:start;min-width:0}
@@ -356,7 +360,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <div class="patients hero-pat">
         <div class="pat-head">
           <h3><span class="es">Pacientes que viajaron a Medellín por su sonrisa</span><span class="en">Patients who flew to Medellín for their smile</span></h3>
-          <p class="muted pat-hint" aria-hidden="true"><span class="es">Desliza →</span><span class="en">Swipe →</span></p>
+          <button type="button" class="pat-hint" aria-label="Ver la siguiente foto"><span class="es">Desliza</span><span class="en">Swipe</span><span class="arr" aria-hidden="true">→</span></button>
         </div>
         <div class="pat-track" role="list">
           <figure role="listitem">
@@ -657,6 +661,11 @@ document.querySelectorAll('a.wa').forEach(a=>a.addEventListener('click',()=>{
   try{if(window.gtag&&CFG.AW_LABEL)gtag('event','conversion',{send_to:CFG.AW_ID+'/'+CFG.AW_LABEL,transaction_id:ref});}catch(e){}
   try{if(CFG.SHEET_URL)navigator.sendBeacon(CFG.SHEET_URL,JSON.stringify({ref,lang,boton:a.id,tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||''),...click}));}catch(e){}
 }));
+
+document.querySelectorAll('.pat-hint').forEach(h=>{const t=h.closest('.patients').querySelector('.pat-track');if(!t)return;
+  h.addEventListener('click',()=>{const f=t.querySelector('figure');const w=f?f.getBoundingClientRect().width+12:t.clientWidth*.7;
+    t.scrollBy({left:(t.scrollLeft+t.clientWidth>=t.scrollWidth-4)?-t.scrollWidth:w,behavior:'smooth'});h.classList.add('seen');});
+  t.addEventListener('scroll',()=>h.classList.add('seen'),{passive:true,once:true});});
 </script>
 
 </body>
