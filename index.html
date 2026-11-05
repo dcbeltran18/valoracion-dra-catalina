@@ -590,7 +590,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
 const CFG={AW_ID:'AW-18528177888',AW_LABEL:'a7ZECPzRoqQdEOCd9oJF',SHEET_URL:'',PHONE:'573203118517'};
 /* Solo mide en el dominio real; en vistas previas no envía nada. */
 if(!/(^|\.)dracatalinabeltran\.com$/.test(location.hostname)){CFG.AW_ID='';}
-const MSG={es:'Hola quiero mi valoracion personalizada gratis para mi diseno de sonrisa',en:'Hi I would like my free smile design assessment'};
+const MSG={es:'Hola, quiero mi valoración gratis de diseño de sonrisa. Mi código de valoración es ',en:'Hi, I would like my free smile design assessment. My assessment code is '};
 const q=new URLSearchParams(location.search);
 function store(k,v){try{if(v!==undefined)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)}catch(e){return v??null}}
 const click={gclid:q.get('gclid')||store('gclid')||'',gbraid:q.get('gbraid')||'',wbraid:q.get('wbraid')||'',camp:q.get('utm_campaign')||''};
@@ -624,7 +624,7 @@ document.querySelectorAll('.testi-video').forEach(f=>{const v=f.querySelector('v
 function setLang(l){
   lang=l;document.documentElement.dataset.lang=l;document.documentElement.lang=l;
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===l)));
-  const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(MSG[l]+' (ref '+ref+')');
+  const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(MSG[l]+ref+'.');
   document.querySelectorAll('a.wa').forEach(a=>a.href=href);
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
