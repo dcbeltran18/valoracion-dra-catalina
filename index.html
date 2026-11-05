@@ -158,7 +158,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* Doctora */
 .doc{display:grid;gap:clamp(28px,5vw,64px);align-items:center}
 @media (min-width:860px){.doc{grid-template-columns:.85fr 1.15fr}}
-.portrait{position:relative;aspect-ratio:3/4;max-width:440px;width:100%;border-radius:0;background:#000;overflow:hidden}
+.portrait{position:relative;aspect-ratio:3/4;max-width:440px;width:100%;margin-inline:auto;justify-self:center;border-radius:0;background:#000;overflow:hidden}
 .portrait::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,169,110,.45);pointer-events:none}
 .portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .doc-copy{display:flex;flex-direction:column;gap:18px;min-width:0}
@@ -279,7 +279,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
 </head>
 <body>
 <div class="announce"><div class="in"><span class="es">Valoración gratis por WhatsApp</span><span class="en">Free assessment on WhatsApp</span><span aria-hidden="true">•</span><span class="es">Precios en dólares</span><span class="en">Prices in US dollars</span></div></div>
-<div class="draft"><div class="in"><b>Borrador.</b> Falta con la doctora: formación y RETHUS, y precio del paquete. Opcional: más casos de antes y después.</div></div>
+<div class="draft"><div class="in"><b>Borrador.</b> Falta con la doctora: precio del paquete. Opcional: más casos de antes y después.</div></div>
 
 <header class="top">
   <div class="in">
@@ -344,7 +344,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
     <div class="in">
       <div class="item"><strong>5,0 ★</strong><span class="es">23 opiniones en Google</span><span class="en">23 Google reviews</span></div>
       <div class="item"><strong>USD 380</strong><span class="es">por diente en porcelana</span><span class="en">per porcelain tooth</span></div>
-      <div class="item"><strong><span class="es">4 días</span><span class="en">4 days</span></strong><span class="es">en Medellín</span><span class="en">in Medellín</span></div>
+      <div class="item"><strong><span class="es">15 años</span><span class="en">15 years</span></strong><span class="es">de experiencia</span><span class="en">of experience</span></div>
       <div class="item"><strong>−70%</strong><span class="es">frente a EE. UU.</span><span class="en">vs. US prices</span></div>
     </div>
   </div>
@@ -394,14 +394,13 @@ footer .in{display:flex;flex-direction:column;gap:6px}
       <div class="portrait"><img src="img/dra-catalina-480.webp" srcset="img/dra-catalina-480.webp 480w, img/dra-catalina-900.webp 900w" sizes="(min-width:860px) 440px, calc(100vw - 36px)" width="480" height="640" loading="lazy" decoding="async" alt="Dra. Catalina Beltrán, odontóloga estética en Medellín"></div>
       <div class="doc-copy">
         <h2>Dra. Catalina Beltrán</h2>
-        <p class="lead muted"><span class="es">Ella misma hace tu valoración, tu diseño y tu tratamiento. Sin intermediarios: la persona que ves en la videollamada es la que te atiende en Medellín.</span><span class="en">She does your assessment, design and treatment herself. The person you meet on the video call is the one who treats you in Medellín.</span></p>
+        <p class="lead muted"><span class="es">Odontóloga con 15 años de experiencia, registrada en el RETHUS desde 2011. Ella misma hace tu valoración, tu diseño y tu tratamiento. Sin intermediarios: la persona que ves en la videollamada es la que te atiende en Medellín.</span><span class="en">A dentist with 15 years of experience, licensed in Colombia since 2011. She does your assessment, design and treatment herself. The person you meet on the video call is the one who treats you in Medellín.</span></p>
         <ul class="creds">
           <li><span class="es">Especialidad</span><span class="en">Field</span><span class="es">Odontología estética</span><span class="en">Cosmetic dentistry</span></li>
-          <li><span class="es">Formación</span><span class="en">Training</span><span class="pend">(por confirmar)</span></li>
-          <li><span>RETHUS</span><span class="pend">(por confirmar)</span></li>
+          <li><span class="es">Formación</span><span class="en">Training</span><span><span class="es">Odontóloga con énfasis en ciencias quirúrgicas, Colegio Odontológico Colombiano. Especialista en Estética Dental, Federación Odontológica Colombiana. Especialización en Auditoría y Garantía de Calidad en Salud.</span><span class="en">Dentist with an emphasis in surgical sciences, Colegio Odontológico Colombiano. Specialist in Cosmetic Dentistry, Federación Odontológica Colombiana. Postgraduate degree in Healthcare Auditing and Quality Assurance.</span></span></li>
+          <li><span>RETHUS</span><span><span class="es">Odontóloga registrada desde 2011</span><span class="en">Licensed dentist since 2011 (Colombian national registry)</span></span></li>
           <li><span class="es">Consultorio</span><span class="en">Office</span><span>Cra 25 #12 Sur 59, El Poblado</span></li>
         </ul>
-        <a class="textlink" href="https://web.sispro.gov.co/THS/Cliente/ConsultasPublicas/ConsultaPublicaDeTHxIdentificacion.aspx" target="_blank" rel="noopener"><span class="es">Verifica su registro en el Ministerio de Salud de Colombia</span><span class="en">Verify her license with Colombia's Ministry of Health</span></a>
       </div>
     </div>
 
