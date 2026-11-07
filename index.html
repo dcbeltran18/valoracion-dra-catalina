@@ -671,12 +671,19 @@ if(CFG.SHEET_URL){
   const ORD=['inicio','casos','doctora','precios','viaje','opiniones','preguntas','final'];let max=0;const t0=Date.now();
   let rh='';try{rh=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):''}catch(e){}
   const origen=(click.gclid||click.gbraid||click.wbraid)?'Google Ads':(q.get('utm_source')||(rh&&rh!==location.hostname?rh:'Directo'));
+  const MT={e:'Exacta',p:'Frase',b:'Amplia'};
+  const kw=(q.get('kw')||store('kw')||'').slice(0,80);if(kw)store('kw',kw);
+  const mt=MT[q.get('mt')||store('mt')||'']||'';if(q.get('mt'))store('mt',q.get('mt'));
+  let nv=1;try{if(!sessionStorage.getItem('dcb_s')){sessionStorage.setItem('dcb_s','1');localStorage.setItem('dcb_vis',String(+(localStorage.getItem('dcb_vis')||0)+1));}nv=+(localStorage.getItem('dcb_vis')||1);}catch(e){}
   const base={t:'v',ref,origen,disp:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?'Celular':'Computador',tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||'')};
   const send=o=>{try{navigator.sendBeacon(CFG.SHEET_URL,JSON.stringify({...base,lang,...o}))}catch(e){}};
-  send({ev:'load'});
+  send({ev:'load',kw,mt,nueva:nv<=1?'Nueva':'Repetida ('+nv+'a)'});
+  const VIDS={};document.querySelectorAll('.testi-video video').forEach(v=>{const n=/eeuu/.test(v.getAttribute('poster')||'')?'Video 1':'Video 2';
+    v.addEventListener('timeupdate',()=>{if(v.duration){const p=Math.round(v.currentTime/v.duration*100);if(!(VIDS[n]>=p))VIDS[n]=p;}});v.addEventListener('ended',()=>{VIDS[n]=100;});});
+  const carga=()=>{try{const n=performance.getEntriesByType('navigation')[0];const t=n&&(n.loadEventEnd||n.domContentLoadedEventEnd);return t?Math.round(t/100)/10:'';}catch(e){return ''}};
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){const i=ORD.indexOf(x.target.id);if(i>max)max=i;}}),{rootMargin:'-45% 0px -45% 0px'});
   ORD.slice(1).forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
-  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')send({ev:'out',hasta:ORD[max],seg:Math.round((Date.now()-t0)/1000)});});
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')send({ev:'out',hasta:ORD[max],seg:Math.round((Date.now()-t0)/1000),carga:carga(),videos:Object.entries(VIDS).map(([k,p])=>k+' '+p+'%').join(', ')});});
 }
 
 document.querySelectorAll('.pat-hint').forEach(h=>{const t=h.closest('.patients').querySelector('.pat-track');if(!t)return;
