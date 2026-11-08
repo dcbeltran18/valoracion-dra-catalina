@@ -260,6 +260,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .testi-play{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;border:0;background:var(--aqua);color:var(--ink);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 24px rgba(0,0,0,.45)}
 .testi-play svg{width:34px;height:34px;margin-left:4px}
 .testi-video.playing .testi-play{display:none}
+.testi-video .pv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;background:transparent}
+.testi-play{z-index:2}
+.pv-tag{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:2;white-space:nowrap;font:500 .85rem var(--body);color:#fff;background:rgba(8,8,7,.72);border:1px solid rgba(201,169,110,.6);padding:7px 13px;border-radius:999px;pointer-events:none}
+.testi-video.playing .pv,.testi-video.playing .pv-tag{display:none}
 .testi-video video{display:block;width:100%;height:auto;aspect-ratio:1/1;background:#000}
 .testi-v .testi-video video{aspect-ratio:9/16}
 @media (min-width:760px){.testi-v{grid-template-columns:1fr minmax(0,320px)}.testi-v .testi-video{order:2}.testi-v .testi-copy{text-align:right;justify-self:end}}
@@ -427,9 +431,11 @@ footer .in{display:flex;flex-direction:column;gap:6px}
     <div class="in vid-after">
       <div class="testi">
         <figure class="testi-video">
-          <video controls playsinline preload="none" poster="video/testimonio-eeuu.webp" width="720" height="720" aria-label="Paciente de Estados Unidos viendo su nueva sonrisa">
-            <source src="video/testimonio-eeuu.mp4" type="video/mp4">
+          <video controls playsinline preload="none" poster="video/testimonio-eeuu-sub.webp" width="720" height="720" aria-label="Paciente de Estados Unidos viendo su nueva sonrisa">
+            <source src="video/testimonio-eeuu-sub.mp4" type="video/mp4">
           </video>
+          <video class="pv" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="video/testimonio-eeuu-sub.webp" data-src="video/testimonio-eeuu-pv.mp4"></video>
+          <span class="pv-tag" aria-hidden="true"><span class="es">🔊 Toca para ver con sonido</span><span class="en">🔊 Tap to watch with sound</span></span>
           <button type="button" class="testi-play" aria-label="Reproducir video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
         </figure>
         <div class="testi-copy">
@@ -536,6 +542,8 @@ footer .in{display:flex;flex-direction:column;gap:6px}
           <video controls playsinline preload="none" poster="video/testimonio-2.webp" width="720" height="1280" aria-label="Paciente contando su experiencia con la Dra. Catalina">
             <source src="video/testimonio-2.mp4" type="video/mp4">
           </video>
+          <video class="pv" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" poster="video/testimonio-2.webp" data-src="video/testimonio-2-pv.mp4"></video>
+          <span class="pv-tag" aria-hidden="true"><span class="es">🔊 Toca para ver con sonido</span><span class="en">🔊 Tap to watch with sound</span></span>
           <button type="button" class="testi-play" aria-label="Reproducir video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
         </figure>
         <div class="testi-copy">
@@ -638,9 +646,16 @@ document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
 }));
 
 /* Video testimonio */
+/* Vista previa en movimiento (sin sonido) cuando el video entra en pantalla */
+(()=>{const rm=matchMedia('(prefers-reduced-motion: reduce)').matches,sd=navigator.connection&&navigator.connection.saveData;
+  if(rm||sd||!('IntersectionObserver' in window))return;
+  const io=new IntersectionObserver(es=>es.forEach(x=>{const p=x.target,f=p.closest('.testi-video');
+    if(x.isIntersecting&&!f.classList.contains('playing')){if(!p.getAttribute('src'))p.src=p.dataset.src;p.play().catch(()=>{});}else if(p.getAttribute('src'))p.pause();}),{rootMargin:'150px 0px',threshold:.25});
+  document.querySelectorAll('.testi-video .pv').forEach(p=>{p.muted=true;io.observe(p);});
+})();
 document.querySelectorAll('.testi-video').forEach(f=>{const v=f.querySelector('video'),b=f.querySelector('.testi-play');
   b.addEventListener('click',()=>{v.play();});
-  v.addEventListener('play',()=>f.classList.add('playing'));
+  v.addEventListener('play',()=>{f.classList.add('playing');const p=f.querySelector('.pv');if(p)p.pause();});
   v.addEventListener('ended',()=>f.classList.remove('playing'));
 });
 
@@ -678,7 +693,7 @@ if(CFG.SHEET_URL){
   const base={t:'v',ref,origen,disp:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?'Celular':'Computador',tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||'')};
   const send=o=>{try{navigator.sendBeacon(CFG.SHEET_URL,JSON.stringify({...base,lang,...o}))}catch(e){}};
   send({ev:'load',kw,mt,nueva:nv<=1?'Nueva':'Repetida ('+nv+'a)'});
-  const VIDS={};document.querySelectorAll('.testi-video video').forEach(v=>{const n=/eeuu/.test(v.getAttribute('poster')||'')?'Video 1':'Video 2';
+  const VIDS={};document.querySelectorAll('.testi-video video:not(.pv)').forEach(v=>{const n=/eeuu/.test(v.getAttribute('poster')||'')?'Video 1':'Video 2';
     v.addEventListener('timeupdate',()=>{if(v.duration){const p=Math.round(v.currentTime/v.duration*100);if(!(VIDS[n]>=p))VIDS[n]=p;}});v.addEventListener('ended',()=>{VIDS[n]=100;});});
   const carga=()=>{try{const n=performance.getEntriesByType('navigation')[0];const t=n&&(n.loadEventEnd||n.domContentLoadedEventEnd);return t?Math.round(t/100)/10:'';}catch(e){return ''}};
   const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){const i=ORD.indexOf(x.target.id);if(i>max)max=i;}}),{rootMargin:'-45% 0px -45% 0px'});
