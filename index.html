@@ -91,6 +91,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   padding:16px 26px;border-radius:0;border:1px solid transparent;cursor:pointer;line-height:1.2}
 .btn svg{width:20px;height:20px;flex:none}
 .btn-wa{background:var(--wa);color:var(--wa-ink);font-weight:600}
+.why{display:grid;gap:14px;margin:28px 0 0;padding:0;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.why li{list-style:none;padding:16px 18px;border:1px solid rgba(201,169,110,.45);border-radius:10px}
+.why b{display:block;margin-bottom:4px}
 .cta-sub{display:block;margin-top:8px;font-size:.82rem;color:var(--muted-d);letter-spacing:.02em}
 .light .cta-sub{color:var(--muted-l)}
 .bar .cta-sub{margin-top:6px;text-align:center;font-size:.76rem}
@@ -122,6 +125,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   .hero-pat .pat-track{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:47%;overflow-x:auto;margin-inline:0;padding-inline:0;max-width:none}
 }
 @media (max-width:899px){.hero-pat{order:-1}.hero{padding-top:20px}}
+@media (max-width:899px){html[data-v] .hero-pat{order:0}html[data-v] .hero{padding-top:8px}html[data-v] .hero-copy{gap:16px}}
 /* Franja de confianza */
 .strip{border-block:1px solid var(--line-d)}
 .strip .in{display:grid;grid-template-columns:repeat(2,1fr)}
@@ -358,7 +362,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.1.6 2.8.5a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.1-.2-.2-.5-.3z"/></svg>
             <span class="es">Pregúntale tu precio a la doctora</span><span class="en">Ask the doctor for your price</span>
           </a>
-          <a class="btn btn-ghost" href="#precios"><span class="es">Ver precios</span><span class="en">See prices</span></a>
+          <a class="btn btn-ghost" id="cta-ghost" href="#precios"><span class="es">Ver precios</span><span class="en">See prices</span></a>
         </div>
         <div class="assure">
           <span class="es">Sin desgaste dental</span><span class="en">No tooth reduction</span>
@@ -406,7 +410,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </div>
 
   <!-- Cómo funciona -->
-  <section class="band light">
+  <section class="band light" data-sec="pasos">
     <div class="in">
       <div class="sec-head">
         <h2><span class="es">Tres pasos, un solo viaje</span><span class="en">Three steps, one trip</span></h2>
@@ -577,7 +581,7 @@ footer .in{display:flex;flex-direction:column;gap:6px}
   </section>
 
   <!-- Antes de decidir + preguntas -->
-  <section class="band light">
+  <section class="band light" data-sec="faq">
     <div class="in two">
       <div>
         <div class="sec-head"><h2><span class="es">Antes de decidir</span><span class="en">Before you decide</span></h2></div>
@@ -611,6 +615,44 @@ footer .in{display:flex;flex-direction:column;gap:6px}
     </div>
   </section>
 </main>
+<script>
+(()=>{const q=new URLSearchParams(location.search);let v=(q.get('v')||'').toLowerCase();
+try{if(v)sessionStorage.setItem('dcb_v',v);else v=sessionStorage.getItem('dcb_v')||''}catch(e){}
+const T=(es,en)=>'<span class="es">'+es+'</span><span class="en">'+en+'</span>';
+const V={
+ precio:{k:T('Precio del diseño de sonrisa en Medellín, en dólares','Smile design prices in Medellín, in US dollars'),
+  h:T('20 carillas E-max por USD 5.900','20 E-max veneers for USD 5,900')+'<span class="alt">'+T('precio cerrado, sin sorpresas.','fixed price, no surprises.')+'</span>',
+  l:T('Una carilla de porcelana cuesta USD 380 en Medellín; en EE. UU., entre USD 1.000 y 2.500. Escríbele a la Dra. Catalina y te confirma tu precio exacto hoy, sin compromiso.','A porcelain veneer costs USD 380 in Medellín; in the US, USD 1,000 to 2,500. Message Dr. Catalina and she confirms your exact price today, with no commitment.'),
+  b:T('Pregúntale tu precio exacto','Ask for your exact price'),g:['#precios',T('Ver todos los precios','See all prices')],
+  o:['precios','casos','pasos','doctora','opiniones','viaje','faq']},
+ colombia:{k:T('Diseño de sonrisa en Colombia · El Poblado, Medellín','Smile design in Colombia · El Poblado, Medellín'),
+  h:T('Tu nueva sonrisa','Your new smile')+'<span class="alt">'+T('y unos días en Medellín.','and a few days in Medellín.')+'</span>',
+  l:T('Un solo viaje de 4 a 7 días: la Dra. Catalina diseña y termina tu sonrisa mientras conoces la ciudad de la eterna primavera. Sin desgaste dental y con hotel a 300 m del consultorio.','One trip of 4 to 7 days: Dr. Catalina designs and finishes your smile while you enjoy the city of eternal spring. No tooth reduction, with a hotel 300 m from the office.'),
+  b:T('Planea tu viaje con la doctora','Plan your trip with the doctor'),g:['#viaje',T('Ver cómo es el viaje','See how the trip works')],
+  o:['viaje','casos','pasos','doctora','opiniones','precios','faq'],strip:true},
+ medellin:{k:T('Odontología estética en El Poblado, Medellín','Cosmetic dentistry in El Poblado, Medellín'),
+  h:T('Diseño de sonrisa en Medellín','Smile design in Medellín')+'<span class="alt">'+T('con la Dra. Catalina Beltrán.','with Dr. Catalina Beltrán.')+'</span>',
+  l:T('15 años de experiencia, 5,0 en Google con 23 opiniones y carillas sin desgaste dental. Mira resultados reales y pregúntale por tu caso.','15 years of experience, rated 5.0 on Google with 23 reviews, and veneers with no tooth reduction. See real results and ask about your case.'),
+  b:T('Escríbele a la doctora','Message the doctor'),g:['#casos',T('Ver resultados','See results')],
+  o:['casos','doctora','opiniones','pasos','precios','viaje','faq']}};
+const c=V[v]; if(!c)return; document.documentElement.dataset.v=v;
+const h=document.querySelector('.hero-copy');
+h.querySelector('.kicker').innerHTML=c.k; h.querySelector('h1').innerHTML=c.h; h.querySelector('.lead').innerHTML=c.l;
+const top=document.getElementById('cta-top'); const sp=top.querySelectorAll(':scope > span'); sp.forEach(x=>x.remove()); top.insertAdjacentHTML('beforeend',c.b);
+const g=document.getElementById('cta-ghost'); g.setAttribute('href',c.g[0]); g.innerHTML=c.g[1];
+if(c.strip){const it=document.querySelectorAll('.strip .item');
+ it[1].innerHTML='<strong>'+T('1 viaje','1 trip')+'</strong>'+T('de 4 a 7 días','of 4 to 7 days');
+ it[3].innerHTML='<strong>'+T('22 °C','22 °C')+'</strong>'+T('todo el año en Medellín','all year in Medellín');
+ document.querySelector('#viaje .trip').insertAdjacentHTML('afterend','<ul class="why">'+
+  '<li><b>'+T('Clima de eterna primavera','Eternal spring weather')+'</b>'+T('Unos 22 °C casi todo el año.','Around 22 °C almost all year.')+'</li>'+
+  '<li><b>'+T('Todo cerca, en El Poblado','Everything close, in El Poblado')+'</b>'+T('Restaurantes, cafés y hoteles a pocas cuadras; el Ibis queda a 300 m del consultorio.','Restaurants, cafés and hotels a few blocks away; the Ibis is 300 m from the office.')+'</li>'+
+  '<li><b>'+T('Días libres para conocer','Free days to explore')+'</b>'+T('Comuna 13, Provenza, el Parque Arví o un paseo a Guatapé mientras se fabrican tus carillas.','Comuna 13, Provenza, Parque Arví or a day trip to Guatapé while your veneers are made.')+'</li>'+
+  '<li><b>'+T('Vuelos directos','Direct flights')+'</b>'+T('Medellín tiene vuelos directos desde varias ciudades de EE. UU.','Medellín has direct flights from several US cities.')+'</li></ul>');}
+const m=document.querySelector('main'),fin=document.getElementById('final');
+const S={pasos:'[data-sec=pasos]',casos:'#casos',doctora:'#doctora',precios:'#precios',viaje:'#viaje',opiniones:'#opiniones',faq:'[data-sec=faq]'};
+c.o.forEach((k,i)=>{const el=m.querySelector(S[k]); m.insertBefore(el,fin); el.classList.toggle('light',i%2===0);});
+})();
+</script>
 
 <footer><div class="in">
   <span>Dra. Catalina Beltrán, odontología estética, Medellín, Colombia</span>
@@ -696,12 +738,12 @@ document.querySelectorAll('a.wa').forEach(a=>a.addEventListener('click',()=>{
 if(CFG.SHEET_URL){
   const ORD=['inicio','casos','doctora','precios','viaje','opiniones','preguntas','final'];let max=0;const t0=Date.now();
   let rh='';try{rh=document.referrer?new URL(document.referrer).hostname.replace(/^www\./,''):''}catch(e){}
-  const origen=(click.gclid||click.gbraid||click.wbraid)?'Google Ads':(q.get('utm_source')||(rh&&rh!==location.hostname?rh:'Directo'));
+  const origen=(click.gclid||click.gbraid||click.wbraid)?'Google Ads':(q.get('utm_source')||(rh&&rh!==location.hostname?rh:'Directo'));const VV=document.documentElement.dataset.v;const origenV=VV?origen+' ('+VV+')':origen;
   const MT={e:'Exacta',p:'Frase',b:'Amplia'};
   const kw=(q.get('kw')||store('kw')||'').slice(0,80);if(kw)store('kw',kw);
   const mt=MT[q.get('mt')||store('mt')||'']||'';if(q.get('mt'))store('mt',q.get('mt'));
   let nv=1;try{if(!sessionStorage.getItem('dcb_s')){sessionStorage.setItem('dcb_s','1');localStorage.setItem('dcb_vis',String(+(localStorage.getItem('dcb_vis')||0)+1));}nv=+(localStorage.getItem('dcb_vis')||1);}catch(e){}
-  const base={t:'v',ref,origen,disp:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?'Celular':'Computador',tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||'')};
+  const base={t:'v',ref,origen:origenV,disp:/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)?'Celular':'Computador',tz:(Intl.DateTimeFormat().resolvedOptions().timeZone||'')};
   const send=o=>{try{navigator.sendBeacon(CFG.SHEET_URL,JSON.stringify({...base,lang,...o}))}catch(e){}};
   send({ev:'load',kw,mt,nueva:nv<=1?'Nueva':'Repetida ('+nv+'a)'});
   const VIDS={};document.querySelectorAll('.testi-video video:not(.pv)').forEach(v=>{const n=/eeuu/.test(v.getAttribute('poster')||'')?'Video 1':'Video 2';
