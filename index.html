@@ -675,6 +675,7 @@ if(!/(^|\.)dracatalinabeltran\.com$/.test(location.hostname)){CFG.AW_ID='';CFG.S
 /* Equipos internos (?yo=1): no cuentan visitas ni conversiones. ?yo=0 lo deshace. */
 (()=>{let v=null;try{v=new URLSearchParams(location.search).get('yo');if(v==='1')localStorage.setItem('dcb_interno','1');if(v==='0')localStorage.removeItem('dcb_interno');if(localStorage.getItem('dcb_interno')==='1'){CFG.AW_ID='';CFG.SHEET_URL='';}}catch(e){}
   if(v==='1'||v==='0'){const d=document.createElement('div');d.textContent=v==='1'?'Listo: este equipo ya no cuenta como visita.':'Este equipo vuelve a contar como visita.';d.style.cssText='position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:99;background:#c9a96e;color:#080807;font:500 15px system-ui;padding:10px 16px;border-radius:999px';document.body.appendChild(d);setTimeout(()=>d.remove(),5000);}})();
+const MSGV={precio:{es:'Hola Dra. Catalina 👋 Quiero saber el precio de mi diseño de sonrisa.',en:'Hi Dr. Catalina 👋 I\'d like to know the price of my smile design.'},colombia:{es:'Hola Dra. Catalina 👋 Quiero información para viajar a Medellín por mi diseño de sonrisa.',en:'Hi Dr. Catalina 👋 I\'d like information about traveling to Medellín for my smile design.'},medellin:{es:'Hola Dra. Catalina 👋 Quiero una valoración de diseño de sonrisa con usted.',en:'Hi Dr. Catalina 👋 I\'d like a smile design assessment with you.'}};
 const MSG={es:'Hola Dra. Catalina 👋 Quiero saber cuánto costaría mi diseño de sonrisa.',en:'Hi Dr. Catalina 👋 I\'d like to know how much my smile design would cost.'};
 const q=new URLSearchParams(location.search);
 function store(k,v){try{if(v!==undefined)sessionStorage.setItem(k,v);return sessionStorage.getItem(k)}catch(e){return v??null}}
@@ -718,7 +719,7 @@ function setLang(l){
   const META={es:['Diseño de sonrisa en Medellín | Dra. Catalina Beltrán','Diseño de sonrisa en Medellín con la Dra. Catalina Beltrán. Carillas sin desgaste dental, valoración gratis por WhatsApp y precio en dólares para pacientes que viven fuera de Colombia.'],en:['Veneers in Medellín, Colombia | Dr. Catalina Beltrán','Veneers with no tooth reduction in Medellín, Colombia. Free assessment on WhatsApp and a fixed price in US dollars: 20 E-max veneers for USD 5,900.']};
   document.title=META[l][0];const md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',META[l][1]);
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.set===l)));
-  const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(MSG[l]+' (ref. '+ref.replace(/^DS-/,'')+')');
+  const href='https://api.whatsapp.com/send?phone='+CFG.PHONE+'&text='+encodeURIComponent(((MSGV[document.documentElement.dataset.v]||{})[l]||MSG[l])+' (ref. '+ref.replace(/^DS-/,'')+')');
   document.querySelectorAll('a.wa').forEach(a=>a.href=href);
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
